@@ -21,6 +21,10 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  dio: any
+  retrofit: any
+  json_annotation: any
+  environment_config: any
   flutter:
     sdk: flutter
 
@@ -29,6 +33,9 @@ dependencies:
   cupertino_icons: ^0.1.3
 
 dev_dependencies:
+  retrofit_generator: any
+  build_runner: any
+  json_serializable: any
   flutter_test:
     sdk: flutter
 
