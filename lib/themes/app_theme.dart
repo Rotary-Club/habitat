@@ -7,6 +7,40 @@ class AppBorderRadius {
       BorderRadius.all(Radius.elliptical(100, 100));
 }
 
+class AppBoxShadow {
+  static const List<BoxShadow> normal = [
+    BoxShadow(
+      color: Color(0xffe0e0e0),
+      blurRadius: 5.0,
+      spreadRadius: 2.0,
+      offset: Offset(
+        0.0,
+        3.0,
+      ),
+    ),
+  ];
+}
+
+class AppHeightSizedBox {
+  static SizedBox doubleExtraSmallBox = SizedBox(height: 4);
+  static SizedBox extraSmallBox = SizedBox(height: 8);
+  static SizedBox smallBox = SizedBox(height: 16);
+  static SizedBox mediumBox = SizedBox(height: 24);
+  static SizedBox largeBox = SizedBox(height: 32);
+  static SizedBox extraLargeBox = SizedBox(height: 48);
+  static SizedBox doubleLargeBox = SizedBox(height: 64);
+}
+
+class AppWidthSizedBox {
+  static SizedBox doubleExtraSmallBox = SizedBox(width: 4);
+  static SizedBox extraSmallBox = SizedBox(width: 8);
+  static SizedBox smallBox = SizedBox(width: 16);
+  static SizedBox mediumBox = SizedBox(width: 24);
+  static SizedBox largeBox = SizedBox(width: 32);
+  static SizedBox extraLargeBox = SizedBox(width: 48);
+  static SizedBox doubleLargeBox = SizedBox(width: 64);
+}
+
 class AppTheme {
   AppTheme._();
 

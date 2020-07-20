@@ -19,7 +19,7 @@ class AppPicture extends StatelessWidget {
   AppPicture({
     @required this.image,
     this.thumbnail,
-    this.placeholder: 'assets/default_thumbnail.png',
+    this.placeholder: 'assets/images/default_thumbnail.png',
     this.blur,
     this.height: 180,
     this.width: 320,
@@ -41,7 +41,7 @@ class AppPicture extends StatelessWidget {
         image: image != null ? NetworkImage(image) : AssetImage(placeholder),
         thumbnail: thumbnail != null
             ? NetworkImage(thumbnail)
-            : AssetImage('assets/default_thumbnail.png'),
+            : AssetImage('assets/images/default_thumbnail.png'),
         placeholder: AssetImage(placeholder),
         blur: blur != null ? blur : thumbnail != null ? 20 : 0,
         height: height,
