@@ -1,47 +1,47 @@
 import 'package:flutter/material.dart';
 
 class AppColor {
-  static Color white = Colors.white;
-  static Color divider = Colors.grey[200];
-  static Color placeHolder = Colors.grey;
-  static Color darkGrey = Colors.grey[700];
-  static Color grey = Colors.grey;
-  static Color lightGrey = Colors.grey[200];
-  static Color veryLightGrey = Colors.grey[100];
-  static Color loading = Colors.grey[400];
-  static Color black = Color(0xff151515);
-  static Color red = Color(0xffed5f59);
-  static Color deepRed = Color(0xffD55550);
-  static Color green = Colors.green;
-  static Color blueText = Colors.blueAccent;
-  static Color blue = Colors.blueAccent;
-  static Color yellow = Colors.yellowAccent;
-  static Color orange = Colors.orange;
-  static Color voucher = lightGrey.withOpacity(0.8);
-  static Color background = Color(0xfff1f3f6);
-  static Color success = Color(0xff91E268);
-  static Color info = Color(0xff0093FC);
-  static Color warning = Color(0xffF4C11A);
-  static Color error = Color(0xffF96366);
+  AppColor._();
+
+  static const Color accent = Color(0xFFC25E88);
+  static const Color white = Colors.white;
+  static const Color divider = Color(0xFFEEEEEE);
+  static const Color placeHolder = Colors.grey;
+  static const Color darkGrey = Color(0xFF616161);
+  static const Color grey = Color(0xFF9E9E9E);
+  static const Color lightGrey = Color(0xFFEEEEEE);
+  static const Color veryLightGrey = Color(0xFFF5F5F5);
+  static const Color loading = Color(0xFFBDBDBD);
+  static const Color black = Color(0xff151515);
+  static const Color red = Color(0xffed5f59);
+  static const Color deepRed = Color(0xffD55550);
+  static const Color green = Color(0xFF00867E);
+  static const Color blueText = Colors.blueAccent;
+  static const Color blue = Color(0xFF0081CE);
+  static const Color yellow = Colors.yellowAccent;
+  static const Color orange = Colors.orange;
+  static const Color background = Color(0xfff1f3f6);
+  static const Color success = Color(0xff91E268);
+  static const Color info = Color(0xff0093FC);
+  static const Color warning = Color(0xffF4C11A);
+  static const Color error = Color(0xffF96366);
 }
 
 class AppBorderRadius {
   static BorderRadiusGeometry small = BorderRadius.circular(4.0);
   static BorderRadiusGeometry normal = BorderRadius.circular(12.0);
+  static BorderRadiusGeometry picture = BorderRadius.circular(22.0);
   static BorderRadiusGeometry oval =
       BorderRadius.all(Radius.elliptical(100, 100));
 }
 
 class AppBoxShadow {
-  static const List<BoxShadow> normal = [
+  static List<BoxShadow> normal = [
     BoxShadow(
-      color: Color(0xffe0e0e0),
-      blurRadius: 5.0,
+      color: AppColor.grey.withOpacity(0.1),
+      offset: const Offset(1.1, 1.1),
+      blurRadius: 30.0,
       spreadRadius: 2.0,
-      offset: Offset(
-        0.0,
-        2.0,
-      ),
     ),
   ];
 }

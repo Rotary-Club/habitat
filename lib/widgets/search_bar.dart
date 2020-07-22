@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:habitat/themes/app_theme.dart';
 
 class SearchBar extends StatelessWidget {
@@ -61,7 +62,7 @@ class SearchBar extends StatelessWidget {
             ),
             contentPadding: EdgeInsets.all(4),
             prefixIcon: Icon(
-              Icons.search,
+              Feather.search,
               color: fontColor ?? AppColor.black,
             ),
             border: OutlineInputBorder(
@@ -75,7 +76,7 @@ class SearchBar extends StatelessWidget {
                 : IconButton(
                     padding: const EdgeInsets.all(0.0),
                     icon: Icon(
-                      Icons.cancel,
+                      Feather.x,
                       color: AppColor.divider,
                     ),
                     onPressed: () {

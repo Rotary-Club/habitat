@@ -36,7 +36,9 @@ class AppPicture extends StatelessWidget {
     return ClipRRect(
       borderRadius: isCustomBorderRadius
           ? customeBorderRadius
-          : isBorderRadius ? AppBorderRadius.small : BorderRadius.circular(0.0),
+          : isBorderRadius
+              ? AppBorderRadius.picture
+              : BorderRadius.circular(0.0),
       child: ProgressiveImage(
         image: image != null ? NetworkImage(image) : AssetImage(placeholder),
         thumbnail: thumbnail != null

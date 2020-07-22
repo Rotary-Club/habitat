@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:habitat/screens/home_screen.dart';
+import 'package:habitat/themes/app_theme.dart';
 import 'package:habitat/widgets/app_text.dart';
 
 class HomeBottomNavigation extends StatefulWidget {
@@ -33,8 +34,8 @@ class _HomeSetUpState extends State<HomeBottomNavigation> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
-        selectedItemColor: Colors.red,
-        selectedIconTheme: IconThemeData(color: Colors.red),
+        selectedItemColor: AppColor.accent,
+        selectedIconTheme: IconThemeData(color: AppColor.accent),
         unselectedItemColor: Colors.grey,
         type: BottomNavigationBarType.fixed,
         elevation: 12,
@@ -49,7 +50,7 @@ class _HomeSetUpState extends State<HomeBottomNavigation> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(
-              AntDesign.home,
+              Feather.home,
             ),
             title: AppText(
               'Home',
@@ -57,11 +58,11 @@ class _HomeSetUpState extends State<HomeBottomNavigation> {
             ),
           ),
           BottomNavigationBarItem(
-            icon: Icon(AntDesign.profile),
+            icon: Icon(Feather.book),
             title: AppText('Reports', fontSize: 13),
           ),
           BottomNavigationBarItem(
-            icon: Icon(AntDesign.user),
+            icon: Icon(Feather.user),
             title: AppText('Profile', fontSize: 13),
           ),
         ],

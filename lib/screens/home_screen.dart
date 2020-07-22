@@ -239,6 +239,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             height: 100,
             width: double.infinity,
             decoration: BoxDecoration(
+              borderRadius: AppBorderRadius.normal,
               color: AppColor.white,
               boxShadow: AppBoxShadow.normal,
             ),
@@ -252,17 +253,18 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     AppText(
                       '10',
                       color: AppColor.blue,
+                      fontSize: 20,
                     ),
                     AppText(
                       'Rented',
                       color: AppColor.grey,
-                      fontSize: 10,
+                      fontSize: 12,
                     ),
                   ],
                 ),
                 Container(
                   height: 30,
-                  width: 2,
+                  width: 0.2,
                   color: Colors.grey,
                 ),
                 Column(
@@ -271,11 +273,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     AppText(
                       '1',
                       color: AppColor.blue,
+                      fontSize: 20,
                     ),
                     AppText(
                       'Renting',
                       color: AppColor.grey,
-                      fontSize: 10,
+                      fontSize: 12,
                     ),
                   ],
                 ),
@@ -301,11 +304,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               borderRadius: AppBorderRadius.normal,
             ),
             child: SearchBar(
-              hintText: 'Search your properties ...',
+              hintText: 'Search your properties...',
               searchFocus: searchFocus,
               searchController: searchController,
               searBarBackgroundColor: AppColor.white,
-              fontColor: AppColor.grey,
+              fontColor: AppColor.grey.withOpacity(0.7),
               onChanged: (String str) {},
             ),
           ),
@@ -313,13 +316,14 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         Container(
           decoration: BoxDecoration(
             color: AppColor.blue,
-            borderRadius: AppBorderRadius.small,
+            borderRadius: AppBorderRadius.normal,
           ),
           child: Padding(
-            padding: const EdgeInsets.all(6.0),
+            padding: const EdgeInsets.all(8.0),
             child: Icon(
-              AntDesign.filter,
+              Feather.sliders,
               color: AppColor.white,
+              size: 20,
             ),
           ),
         ),
@@ -453,7 +457,10 @@ class HomeListView extends StatelessWidget {
               onTap: () => callBack(),
               child: Container(
                 decoration: BoxDecoration(
-                  boxShadow: AppBoxShadow.normal,
+                  border: Border(
+                    bottom: BorderSide(
+                        width: 0.3, color: AppColor.grey.withOpacity(0.2)),
+                  ),
                   color: AppColor.white,
                 ),
                 child: Padding(
@@ -489,15 +496,16 @@ class HomeListView extends StatelessWidget {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.green,
-                              borderRadius: AppBorderRadius.small,
+                              color: AppColor.green,
+                              borderRadius: AppBorderRadius.normal,
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: AppText(
-                                'RM${listData['price']}/ M',
+                                'RM${listData['price']}/m',
                                 color: AppColor.white,
-                                fontSize: 10,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
@@ -505,6 +513,7 @@ class HomeListView extends StatelessWidget {
                           AppText(
                             listData['type'],
                             fontSize: 9,
+                            fontWeight: FontWeight.w500,
                           ),
                         ],
                       ),
