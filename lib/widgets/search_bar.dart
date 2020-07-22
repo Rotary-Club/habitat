@@ -20,7 +20,7 @@ class SearchBar extends StatelessWidget {
     this.hintText = 'Search here...',
     this.searchFocus,
     this.searchController,
-    this.margin,
+    this.margin = const EdgeInsets.all(7),
     this.padding,
     this.backgroundColor,
     this.searBarBackgroundColor,
