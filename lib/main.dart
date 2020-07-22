@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:habitat/screens/navigation_home_screen.dart';
+import 'package:habitat/home_bottom_navigation.dart';
 
 void main() {
   runApp(HabitatApp());
@@ -14,7 +14,7 @@ class HabitatApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: NavigationHomeScreen(),
+      home: HomeBottomNavigation(),
     );
   }
 }

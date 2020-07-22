@@ -1,5 +1,30 @@
 import 'package:flutter/material.dart';
 
+class AppColor {
+  static Color white = Colors.white;
+  static Color divider = Colors.grey[200];
+  static Color placeHolder = Colors.grey;
+  static Color darkGrey = Colors.grey[700];
+  static Color grey = Colors.grey;
+  static Color lightGrey = Colors.grey[200];
+  static Color veryLightGrey = Colors.grey[100];
+  static Color loading = Colors.grey[400];
+  static Color black = Color(0xff151515);
+  static Color red = Color(0xffed5f59);
+  static Color deepRed = Color(0xffD55550);
+  static Color green = Colors.green;
+  static Color blueText = Colors.blueAccent;
+  static Color blue = Colors.blueAccent;
+  static Color yellow = Colors.yellowAccent;
+  static Color orange = Colors.orange;
+  static Color voucher = lightGrey.withOpacity(0.8);
+  static Color background = Color(0xfff1f3f6);
+  static Color success = Color(0xff91E268);
+  static Color info = Color(0xff0093FC);
+  static Color warning = Color(0xffF4C11A);
+  static Color error = Color(0xffF96366);
+}
+
 class AppBorderRadius {
   static BorderRadiusGeometry small = BorderRadius.circular(4.0);
   static BorderRadiusGeometry normal = BorderRadius.circular(12.0);

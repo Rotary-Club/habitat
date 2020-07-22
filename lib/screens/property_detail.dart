@@ -23,7 +23,7 @@ class PropertyDetail extends StatelessWidget {
                 image:
                     'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
               ),
-            )
+            ),
           ],
         ),
       ),
