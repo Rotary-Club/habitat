@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:habitat/themes/app_theme.dart';
 import 'package:habitat/util/utils.dart';
 
 class AppActionButton extends StatelessWidget {
@@ -25,7 +26,7 @@ class AppActionButton extends StatelessWidget {
     return Container(
       width: isMaxSize ? maxWidth(context) : null,
       child: RaisedButton(
-        color: color,
+        color: AppColor.blue,
         onPressed: function,
         child: Container(
           margin: margin ?? EdgeInsets.symmetric(vertical: 14),
