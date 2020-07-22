@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:habitat/screens/contract_term.dart';
 import 'package:habitat/themes/app_theme.dart';
 import 'package:habitat/widgets/app_action_button.dart';
 import 'package:habitat/widgets/app_picture.dart';
@@ -29,12 +30,15 @@ class PropertyDetail extends StatelessWidget {
     );
   }
 
-  Widget _buildStickyButton() {
+  Widget _buildStickyButton(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: AppActionButton(
         title: 'Generate Agreement',
-        function: () {},
+        function: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => ContractTermPage()));
+        },
         color: AppColor.blue,
       ),
     );
@@ -83,7 +87,38 @@ class PropertyDetail extends StatelessWidget {
                     'habitat@habitat.com.my',
                     color: AppColor.grey,
                     fontSize: 12,
-                  )
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: AppColor.green,
+                          borderRadius: AppBorderRadius.small,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(6.0),
+                          child: AppText(
+                            'Call',
+                            color: AppColor.white,
+                          ),
+                        ),
+                      ),
+                      AppWidthSizedBox.extraSmallBox,
+                      Container(
+                        decoration: BoxDecoration(
+                          color: AppColor.blue,
+                          borderRadius: AppBorderRadius.small,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(6.0),
+                          child: AppText(
+                            'Message',
+                            color: AppColor.white,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ],
@@ -97,7 +132,7 @@ class PropertyDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppScaffold(
       appBar: false,
-      bottomNavigatorBar: _buildStickyButton(),
+      bottomNavigatorBar: _buildStickyButton(context),
       child: SingleChildScrollView(
         child: Container(
           child: Column(
