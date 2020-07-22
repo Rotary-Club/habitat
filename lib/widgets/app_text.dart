@@ -12,6 +12,7 @@ class AppText extends StatelessWidget {
   final FontStyle fontStype;
   final bool underline;
   final bool isStrikeThrough;
+  final double letterSpacing;
 
   const AppText(
     this.text, {
@@ -24,6 +25,7 @@ class AppText extends StatelessWidget {
     this.overflow: TextOverflow.ellipsis,
     this.maxlines: 3,
     this.underline: false,
+    this.letterSpacing,
     this.isStrikeThrough: false,
   });
 
@@ -39,6 +41,7 @@ class AppText extends StatelessWidget {
         fontWeight: fontWeight,
         fontStyle: fontStype,
         fontFamily: fontFamily,
+        letterSpacing: letterSpacing,
         decoration: underline
             ? TextDecoration.underline
             : isStrikeThrough ? TextDecoration.lineThrough : null,

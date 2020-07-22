@@ -19,6 +19,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   bool multiple = true;
   List<Map<String, dynamic>> homeList = [
     {
+      'id': 1,
       'image':
           'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
       'title': 'Seri Mutiara Apartment',
@@ -27,6 +28,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       'type': 'For Rent',
     },
     {
+      'id': 2,
       'image':
           'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
       'title': 'Seri Mutiara Apartment',
@@ -35,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       'type': 'For Rent',
     },
     {
+      'id': 3,
       'image':
           'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
       'title': 'Seri Mutiara Apartment',
@@ -43,6 +46,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       'type': 'For Rent',
     },
     {
+      'id': 4,
       'image':
           'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
       'title': 'Seri Mutiara Apartment',
@@ -51,6 +55,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       'type': 'For Rent',
     },
     {
+      'id': 5,
       'image':
           'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
       'title': 'Seri Mutiara Apartment',
@@ -59,6 +64,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       'type': 'For Rent',
     },
     {
+      'id': 6,
       'image':
           'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
       'title': 'Seri Mutiara Apartment',
@@ -67,6 +73,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       'type': 'For Rent',
     },
     {
+      'id': 7,
       'image':
           'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
       'title': 'Seri Mutiara Apartment',
@@ -95,12 +102,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   Widget _buildPropertyListItem(BuildContext context, int i) {
     return InkWell(
-      onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => PropertyDetail(
-                    tag: i.toString(),
-                  ))),
+      // onTap: () => Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //         builder: (context) => PropertyDetail(
+      //               tag: i.toString(),
+      //             ))),
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: 16,
@@ -367,13 +374,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                       animationController: animationController,
                       listData: homeList[index],
                       callBack: () {
-                        // Navigator.push<dynamic>(
-                        //   context,
-                        //   MaterialPageRoute<dynamic>(
-                        //     builder: (BuildContext context) =>
-                        //         homeList[index].navigateScreen,
-                        //   ),
-                        // );
+                        Navigator.push<dynamic>(
+                          context,
+                          MaterialPageRoute<dynamic>(
+                            builder: (BuildContext context) => PropertyDetail(),
+                          ),
+                        );
                       },
                     );
                   },
@@ -428,9 +434,9 @@ class HomeListView extends StatelessWidget {
       : super(key: key);
 
   final Map<String, dynamic> listData;
+  final Animation<dynamic> animation;
   final VoidCallback callBack;
   final AnimationController animationController;
-  final Animation<dynamic> animation;
 
   @override
   Widget build(BuildContext context) {
@@ -442,64 +448,67 @@ class HomeListView extends StatelessWidget {
           child: Transform(
             transform: Matrix4.translationValues(
                 0.0, 50 * (1.0 - animation.value), 0.0),
-            child: Container(
-              decoration: BoxDecoration(
-                boxShadow: AppBoxShadow.normal,
-                color: AppColor.white,
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    AppPicture(
-                      image: listData['image'],
-                      height: 75,
-                      width: 75,
-                      isBorderRadius: true,
-                    ),
-                    AppWidthSizedBox.smallBox,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        AppHeightSizedBox.extraSmallBox,
-                        AppText(
-                          listData['title'],
-                          fontSize: 17,
-                        ),
-                        AppText(
-                          listData['description'],
-                          fontSize: 12,
-                          color: Colors.grey,
-                        ),
-                      ],
-                    ),
-                    Expanded(child: Container()),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.green,
-                            borderRadius: AppBorderRadius.small,
+            child: InkWell(
+              onTap: () => callBack(),
+              child: Container(
+                decoration: BoxDecoration(
+                  boxShadow: AppBoxShadow.normal,
+                  color: AppColor.white,
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      AppPicture(
+                        image: listData['image'],
+                        height: 75,
+                        width: 75,
+                        isBorderRadius: true,
+                      ),
+                      AppWidthSizedBox.smallBox,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          AppHeightSizedBox.extraSmallBox,
+                          AppText(
+                            listData['title'],
+                            fontSize: 17,
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: AppText(
-                              'RM${listData['price']}/ M',
-                              color: AppColor.white,
-                              fontSize: 10,
+                          AppText(
+                            listData['description'],
+                            fontSize: 12,
+                            color: Colors.grey,
+                          ),
+                        ],
+                      ),
+                      Expanded(child: Container()),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.green,
+                              borderRadius: AppBorderRadius.small,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: AppText(
+                                'RM${listData['price']}/ M',
+                                color: AppColor.white,
+                                fontSize: 10,
+                              ),
                             ),
                           ),
-                        ),
-                        AppHeightSizedBox.smallBox,
-                        AppText(
-                          listData['type'],
-                          fontSize: 9,
-                        ),
-                      ],
-                    ),
-                  ],
+                          AppHeightSizedBox.smallBox,
+                          AppText(
+                            listData['type'],
+                            fontSize: 9,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
