@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:habitat/screens/property_detail.dart';
 import 'package:habitat/themes/app_theme.dart';
 import 'package:habitat/widgets/app_category_tag.dart';
@@ -229,7 +230,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 child: Container(),
               ),
               Icon(
-                Icons.notifications_none,
+                AntDesign.notification,
               ),
             ],
           ),
@@ -300,7 +301,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               borderRadius: AppBorderRadius.normal,
             ),
             child: SearchBar(
-              hintText: 'Search your peroperties ...',
+              hintText: 'Search your properties ...',
               searchFocus: searchFocus,
               searchController: searchController,
               searBarBackgroundColor: AppColor.white,
@@ -317,7 +318,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           child: Padding(
             padding: const EdgeInsets.all(6.0),
             child: Icon(
-              Icons.format_align_justify,
+              AntDesign.filter,
               color: AppColor.white,
             ),
           ),

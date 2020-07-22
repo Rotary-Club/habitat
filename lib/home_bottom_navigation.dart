@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:habitat/screens/home_screen.dart';
 import 'package:habitat/widgets/app_text.dart';
 
@@ -48,7 +49,7 @@ class _HomeSetUpState extends State<HomeBottomNavigation> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home,
+              AntDesign.home,
             ),
             title: AppText(
               'Home',
@@ -56,11 +57,11 @@ class _HomeSetUpState extends State<HomeBottomNavigation> {
             ),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.assignment),
+            icon: Icon(AntDesign.profile),
             title: AppText('Reports', fontSize: 13),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+            icon: Icon(AntDesign.user),
             title: AppText('Profile', fontSize: 13),
           ),
         ],
