@@ -3,7 +3,9 @@ import 'package:habitat/screens/property_detail.dart';
 import 'package:habitat/themes/app_theme.dart';
 import 'package:habitat/widgets/app_category_tag.dart';
 import 'package:habitat/widgets/app_picture.dart';
+import 'package:habitat/widgets/app_scaffold.dart';
 import 'package:habitat/widgets/app_text.dart';
+import 'package:habitat/widgets/search_bar.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key key}) : super(key: key);
@@ -15,7 +17,64 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   AnimationController animationController;
   bool multiple = true;
-
+  List<Map<String, dynamic>> homeList = [
+    {
+      'image':
+          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
+      'title': 'Seri Mutiara Apartment',
+      'description': 'Shah Alam Selangor',
+      'price': '1500',
+      'type': 'For Rent',
+    },
+    {
+      'image':
+          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
+      'title': 'Seri Mutiara Apartment',
+      'description': 'Shah Alam Selangor',
+      'price': '1500',
+      'type': 'For Rent',
+    },
+    {
+      'image':
+          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
+      'title': 'Seri Mutiara Apartment',
+      'description': 'Shah Alam Selangor',
+      'price': '1500',
+      'type': 'For Rent',
+    },
+    {
+      'image':
+          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
+      'title': 'Seri Mutiara Apartment',
+      'description': 'Shah Alam Selangor',
+      'price': '1500',
+      'type': 'For Rent',
+    },
+    {
+      'image':
+          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
+      'title': 'Seri Mutiara Apartment',
+      'description': 'Shah Alam Selangor',
+      'price': '1500',
+      'type': 'For Rent',
+    },
+    {
+      'image':
+          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
+      'title': 'Seri Mutiara Apartment',
+      'description': 'Shah Alam Selangor',
+      'price': '1500',
+      'type': 'For Rent',
+    },
+    {
+      'image':
+          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
+      'title': 'Seri Mutiara Apartment',
+      'description': 'Shah Alam Selangor',
+      'price': '1500',
+      'type': 'For Rent',
+    },
+  ];
   @override
   void initState() {
     animationController = AnimationController(
@@ -128,39 +187,207 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: FutureBuilder<bool>(
-        future: getData(),
-        builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-          if (!snapshot.hasData) {
-            return const SizedBox();
-          } else {
-            return Padding(
-              padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+  Widget _buildAvatar() {
+    return Padding(
+      padding: const EdgeInsets.all(28.0),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                ),
+                child: AppPicture(
+                  width: 48,
+                  height: 48,
+                  isCustomBorderRadius: true,
+                  customeBorderRadius: BorderRadius.all(Radius.circular(60.0)),
+                  image:
+                      'https://www.straitstimes.com/sites/default/files/styles/article_pictrure_780x520_/public/articles/2019/05/31/st_20190531_trend311t5b_4878396.jpg?itok=W3PepKXp&timestamp=1559235671',
+                ),
+              ),
+              AppWidthSizedBox.smallBox,
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  appBar(),
-                  AppHeightSizedBox.smallBox,
-                  Expanded(
-                    child: MediaQuery.removePadding(
-                      context: context,
-                      removeTop: true,
-                      child: ListView.builder(
-                          itemCount: 4,
-                          itemBuilder: (context, i) =>
-                              _buildPropertyListItem(context, i)),
-                    ),
+                children: [
+                  AppText('Kim Jong Un'),
+                  AppText(
+                    'Super Rich Landlord',
+                    color: AppColor.grey,
                   ),
                 ],
               ),
-            );
-          }
-        },
+              Expanded(
+                child: Container(),
+              ),
+              Icon(
+                Icons.notifications_none,
+              ),
+            ],
+          ),
+          AppHeightSizedBox.mediumBox,
+          Container(
+            height: 100,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: AppColor.white,
+              boxShadow: AppBoxShadow.normal,
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    AppText(
+                      '10',
+                      color: AppColor.blue,
+                    ),
+                    AppText(
+                      'Rented',
+                      color: AppColor.grey,
+                      fontSize: 10,
+                    ),
+                  ],
+                ),
+                Container(
+                  height: 30,
+                  width: 2,
+                  color: Colors.grey,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    AppText(
+                      '1',
+                      color: AppColor.blue,
+                    ),
+                    AppText(
+                      'Renting',
+                      color: AppColor.grey,
+                      fontSize: 10,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSearchBar(BuildContext context) {
+    FocusNode searchFocus;
+    TextEditingController searchController;
+    return Row(
+      children: [
+        Flexible(
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+            decoration: BoxDecoration(
+              boxShadow: AppBoxShadow.normal,
+              color: AppColor.white,
+              borderRadius: AppBorderRadius.normal,
+            ),
+            child: SearchBar(
+              hintText: 'Search your peroperties ...',
+              searchFocus: searchFocus,
+              searchController: searchController,
+              searBarBackgroundColor: AppColor.white,
+              fontColor: AppColor.grey,
+              onChanged: (String str) {},
+            ),
+          ),
+        ),
+        Container(
+          decoration: BoxDecoration(
+            color: AppColor.blue,
+            borderRadius: AppBorderRadius.small,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(6.0),
+            child: Icon(
+              Icons.format_align_justify,
+              color: AppColor.white,
+            ),
+          ),
+        ),
+        AppWidthSizedBox.smallBox,
+      ],
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AppScaffold(
+      appBar: false,
+      backgroundColor: Colors.white,
+      child: Padding(
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            // Expanded(
+            //   child: MediaQuery.removePadding(
+            //     context: context,
+            //     removeTop: true,
+            //     child: ListView.builder(
+            //         itemCount: 4,
+            //         itemBuilder: (context, i) =>
+            //             _buildPropertyListItem(context, i)),
+            //   ),
+            // ),
+            _buildAvatar(),
+            _buildSearchBar(context),
+            AppHeightSizedBox.smallBox,
+            Flexible(
+              child: GridView(
+                padding: const EdgeInsets.only(top: 0, left: 12, right: 12),
+                physics: const BouncingScrollPhysics(),
+                scrollDirection: Axis.vertical,
+                children: List<Widget>.generate(
+                  homeList.length,
+                  (int index) {
+                    final int count = homeList.length;
+                    final Animation<double> animation =
+                        Tween<double>(begin: 0.0, end: 1.0).animate(
+                      CurvedAnimation(
+                        parent: animationController,
+                        curve: Interval((1 / count) * index, 1.0,
+                            curve: Curves.fastOutSlowIn),
+                      ),
+                    );
+                    animationController.forward();
+                    return HomeListView(
+                      animation: animation,
+                      animationController: animationController,
+                      listData: homeList[index],
+                      callBack: () {
+                        // Navigator.push<dynamic>(
+                        //   context,
+                        //   MaterialPageRoute<dynamic>(
+                        //     builder: (BuildContext context) =>
+                        //         homeList[index].navigateScreen,
+                        //   ),
+                        // );
+                      },
+                    );
+                  },
+                ),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 1,
+                  mainAxisSpacing: 12.0,
+                  crossAxisSpacing: 12.0,
+                  childAspectRatio: 3.6,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -187,6 +414,98 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           ),
         ],
       ),
+    );
+  }
+}
+
+class HomeListView extends StatelessWidget {
+  const HomeListView(
+      {Key key,
+      this.listData,
+      this.callBack,
+      this.animationController,
+      this.animation})
+      : super(key: key);
+
+  final Map<String, dynamic> listData;
+  final VoidCallback callBack;
+  final AnimationController animationController;
+  final Animation<dynamic> animation;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: animationController,
+      builder: (BuildContext context, Widget child) {
+        return FadeTransition(
+          opacity: animation,
+          child: Transform(
+            transform: Matrix4.translationValues(
+                0.0, 50 * (1.0 - animation.value), 0.0),
+            child: Container(
+              decoration: BoxDecoration(
+                boxShadow: AppBoxShadow.normal,
+                color: AppColor.white,
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    AppPicture(
+                      image: listData['image'],
+                      height: 75,
+                      width: 75,
+                      isBorderRadius: true,
+                    ),
+                    AppWidthSizedBox.smallBox,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        AppHeightSizedBox.extraSmallBox,
+                        AppText(
+                          listData['title'],
+                          fontSize: 17,
+                        ),
+                        AppText(
+                          listData['description'],
+                          fontSize: 12,
+                          color: Colors.grey,
+                        ),
+                      ],
+                    ),
+                    Expanded(child: Container()),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.green,
+                            borderRadius: AppBorderRadius.small,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: AppText(
+                              'RM${listData['price']}/ M',
+                              color: AppColor.white,
+                              fontSize: 10,
+                            ),
+                          ),
+                        ),
+                        AppHeightSizedBox.smallBox,
+                        AppText(
+                          listData['type'],
+                          fontSize: 9,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }
