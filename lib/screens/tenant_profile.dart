@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:habitat/themes/app_theme.dart';
-import 'package:habitat/util/utils.dart';
 import 'package:habitat/widgets/app_action_button.dart';
-import 'package:habitat/widgets/app_picture.dart';
+import 'package:habitat/widgets/app_avatar_container.dart';
 import 'package:habitat/widgets/app_scaffold.dart';
 import 'package:habitat/widgets/app_tenant_detail.dart';
 import 'package:habitat/widgets/app_text.dart';
@@ -10,51 +9,6 @@ import 'package:habitat/widgets/app_text_form_field.dart';
 
 class TenantProfilePage extends StatelessWidget {
   const TenantProfilePage({Key key}) : super(key: key);
-
-  Widget _buildTenantAvatar(BuildContext context) {
-    return Container(
-      height: maxHeight(context) * 0.3,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: AppColor.white,
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(40),
-          bottomRight: Radius.circular(40),
-        ),
-      ),
-      child: Column(
-        children: [
-          AppHeightSizedBox.mediumBox,
-          Container(
-            width: 105,
-            height: 105,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppColor.green,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                child: AppPicture(
-                  image:
-                      'https://img.etimg.com/thumb/msid-69139984,width-1200,height-900,imgsize-220108,overlay-etpanache/photo.jpg',
-                  isCustomBorderRadius: true,
-                  customeBorderRadius: AppBorderRadius.oval,
-                ),
-              ),
-            ),
-          ),
-          AppText(
-            'Captain American',
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-          ),
-          AppText('captain@gmail.com'),
-          AppText('(+6) 012-345 6789'),
-        ],
-      ),
-    );
-  }
 
   Widget _buildTenantDetail(BuildContext context) {
     return Padding(
@@ -138,7 +92,13 @@ class TenantProfilePage extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          _buildTenantAvatar(context),
+          AppAvatarContainer(
+            image:
+                'https://img.etimg.com/thumb/msid-69139984,width-1200,height-900,imgsize-220108,overlay-etpanache/photo.jpg',
+            email: 'captain@habitat.com',
+            name: 'Captain American',
+            phoneNo: '(+6) 012 345 6789',
+          ),
           _buildTenantDetail(context),
         ],
       ),

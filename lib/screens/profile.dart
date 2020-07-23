@@ -6,22 +6,22 @@ import 'package:habitat/widgets/app_scaffold.dart';
 import 'package:habitat/widgets/app_text.dart';
 import 'package:habitat/widgets/app_text_form_field.dart';
 
-class LandlordProfile extends StatelessWidget {
-  const LandlordProfile({Key key}) : super(key: key);
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({Key key}) : super(key: key);
 
-  Widget _buildLandlordDetail(BuildContext context) {
+  Widget _buildProfileDetail(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AppText(
-            'Landlord Details',
+            'Tenant Details',
             fontWeight: FontWeight.bold,
           ),
           AppTextFormField(
             'Full Name',
-            initialValue: 'KLCC MANAGment',
+            initialValue: 'Captain American',
           ),
           AppTextFormField(
             'NRIC',
@@ -37,12 +37,32 @@ class LandlordProfile extends StatelessWidget {
           ),
           AppTextFormField(
             'Company (Optional)',
-            initialValue: 'KLCC Sdn Bhd',
+            initialValue: 'Prince Court Hospital',
+            isDropDown: true,
+          ),
+          AppTextFormField(
+            'Job (Optional)',
+            initialValue: 'Gum Speciallist',
+            isDropDown: true,
+          ),
+          AppTextFormField(
+            'Rental Payment',
+            initialValue: 'Monthly',
+            isDropDown: true,
+          ),
+          AppTextFormField(
+            'Bank Name',
+            initialValue: 'Maybank',
+            isDropDown: true,
+          ),
+          AppTextFormField(
+            'Bank Account',
+            initialValue: '1560 1100 8888',
             isDropDown: true,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: AppText('Contact Person'),
+            child: AppText('Emergency Contact'),
           ),
           AppTextFormField(
             'Full name',
@@ -61,6 +81,12 @@ class LandlordProfile extends StatelessWidget {
             initialValue: 'Cousin',
             isDropDown: true,
           ),
+          AppHeightSizedBox.mediumBox,
+          AppActionButton(
+            function: () {},
+            title: 'SAVE DETAILS',
+            isMaxSize: true,
+          ),
         ],
       ),
     );
@@ -72,12 +98,12 @@ class LandlordProfile extends StatelessWidget {
         children: [
           AppAvatarContainer(
             image:
-                'https://s3-ap-southeast-1.amazonaws.com/atap-main/profile-m-plain/60273ee5-07ca-40db-b0ba-cd45fb6957ad/ioipropertiesgroupberhad.jpg',
-            name: 'IOI Properties',
+                'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
+            name: 'JJ Lin',
+            email: 'JJLIN@habitat.com',
             phoneNo: '(+6) 012 345 6789',
-            email: 'ioi_properties2habitat.com',
           ),
-          _buildLandlordDetail(context),
+          _buildProfileDetail(context),
         ],
       ),
     );
@@ -87,11 +113,7 @@ class LandlordProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppScaffold(
       backgroundColor: AppColor.veryLightGrey,
-      titleChild: AppText('Landlord Details'),
-      bottomNavigatorBar: AppActionButton(
-        function: () {},
-        title: 'SAVE DETAILS',
-      ),
+      titleChild: AppText('Profile'),
       child: _buildMainContainer(context),
     );
   }

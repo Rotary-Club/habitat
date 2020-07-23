@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:habitat/screens/landlord_profile.dart';
 import 'package:habitat/screens/tenant_profile.dart';
 import 'package:habitat/themes/app_theme.dart';
-import 'package:habitat/widgets/app_action_button.dart';
 import 'package:habitat/widgets/app_picture.dart';
 import 'package:habitat/widgets/app_scaffold.dart';
 import 'package:habitat/widgets/app_text.dart';

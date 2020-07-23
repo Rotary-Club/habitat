@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:habitat/screens/contrat_tenant_detail.dart';
 import 'package:habitat/themes/app_theme.dart';
 import 'package:habitat/widgets/app_action_button.dart';
-import 'package:habitat/widgets/app_picture.dart';
 import 'package:habitat/widgets/app_scaffold.dart';
 import 'package:habitat/widgets/app_tenant_detail.dart';
 import 'package:habitat/widgets/app_text.dart';
