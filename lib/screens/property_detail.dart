@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habitat/screens/contract_term.dart';
+import 'package:habitat/screens/tenant_profile.dart';
 import 'package:habitat/themes/app_theme.dart';
 import 'package:habitat/widgets/app_action_button.dart';
 import 'package:habitat/widgets/app_picture.dart';
@@ -44,86 +45,94 @@ class PropertyDetail extends StatelessWidget {
     );
   }
 
-  Widget _buildTenantDetails() {
+  Widget _buildTenantDetails(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AppText('Tenant Details'),
-          AppHeightSizedBox.smallBox,
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  boxShadow: AppBoxShadow.normal,
-                  borderRadius: AppBorderRadius.normal,
-                ),
-                child: AppPicture(
-                  width: 105,
-                  height: 105,
-                  image:
-                      'https://img.etimg.com/thumb/msid-69139984,width-1200,height-900,imgsize-220108,overlay-etpanache/photo.jpg',
-                  fit: BoxFit.cover,
-                  isCustomBorderRadius: true,
-                  customeBorderRadius: AppBorderRadius.normal,
-                ),
-              ),
-              AppWidthSizedBox.smallBox,
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  AppText(
-                    'Captain American',
-                    fontWeight: FontWeight.bold,
-                  ),
-                  AppText(
-                    '+6012 345 6789',
-                    color: AppColor.grey,
-                    fontSize: 12,
-                  ),
-                  AppText(
-                    'habitat@habitat.com.my',
-                    color: AppColor.grey,
-                    fontSize: 12,
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: AppColor.green,
-                          borderRadius: AppBorderRadius.small,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(6.0),
-                          child: AppText(
-                            'Call',
-                            color: AppColor.white,
-                          ),
-                        ),
-                      ),
-                      AppWidthSizedBox.extraSmallBox,
-                      Container(
-                        decoration: BoxDecoration(
-                          color: AppColor.blue,
-                          borderRadius: AppBorderRadius.small,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(6.0),
-                          child: AppText(
-                            'Message',
-                            color: AppColor.white,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
+      child: InkWell(
+        onTap: () => Navigator.push(context,
+            MaterialPageRoute(builder: (context) => TenantProfilePage())),
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: AppBoxShadow.normal,
+            borderRadius: AppBorderRadius.normal,
+            color: AppColor.white,
           ),
-        ],
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        boxShadow: AppBoxShadow.normal,
+                        borderRadius: AppBorderRadius.normal,
+                      ),
+                      child: AppPicture(
+                        width: 105,
+                        height: 105,
+                        image:
+                            'https://img.etimg.com/thumb/msid-69139984,width-1200,height-900,imgsize-220108,overlay-etpanache/photo.jpg',
+                        fit: BoxFit.cover,
+                        isCustomBorderRadius: true,
+                        customeBorderRadius: AppBorderRadius.normal,
+                      ),
+                    ),
+                    AppWidthSizedBox.smallBox,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        AppText(
+                          'Captain American',
+                          fontWeight: FontWeight.bold,
+                        ),
+                        AppText(
+                          '+6012 345 6789',
+                          color: AppColor.grey,
+                          fontSize: 12,
+                        ),
+                        AppText(
+                          'habitat@habitat.com.my',
+                          color: AppColor.grey,
+                          fontSize: 12,
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(top: 16),
+                          decoration: BoxDecoration(
+                            color: AppColor.green,
+                            borderRadius: AppBorderRadius.small,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(6.0),
+                            child: AppText(
+                              'view Profile',
+                              color: AppColor.white,
+                              fontSize: 11,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          AppText('Rented'),
+                          Icon(
+                            Icons.notification_important,
+                            color: AppColor.red,
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -133,6 +142,7 @@ class PropertyDetail extends StatelessWidget {
     return AppScaffold(
       appBar: false,
       bottomNavigatorBar: _buildStickyButton(context),
+      backgroundColor: AppColor.veryLightGrey,
       child: SingleChildScrollView(
         child: Container(
           child: Column(
@@ -269,17 +279,34 @@ class PropertyDetail extends StatelessWidget {
                   height: 3,
                 ),
               ),
+              AppHeightSizedBox.smallBox,
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: AppText('Description'),
               ),
-              AppHeightSizedBox.smallBox,
+              AppHeightSizedBox.extraSmallBox,
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: AppText(
-                  'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tmpor invidun ut labore et dolore magna aliquyam eata, sed diam voluptua.',
+                  'Sky Condominium is the tallest landmark in Bandar Puchong Jaya. Situated 200 metres above sea level at the Hilltop with unobstructed views of the Puchong and KL skyline.',
                   letterSpacing: 1.5,
                   maxlines: 15,
+                  fontSize: 13,
+                ),
+              ),
+              AppHeightSizedBox.smallBox,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: AppText('Address'),
+              ),
+              AppHeightSizedBox.extraSmallBox,
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: AppText(
+                  'Persiaran Puchong Jaya Selatan, Bandar Puchong Jaya, 47100 Puchong, Selangor.',
+                  letterSpacing: 1.5,
+                  maxlines: 15,
+                  fontSize: 13,
                 ),
               ),
               Padding(
@@ -290,7 +317,7 @@ class PropertyDetail extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: AppText('Ameities'),
+                child: AppText('Amenities'),
               ),
               AppHeightSizedBox.smallBox,
               Padding(
@@ -312,7 +339,7 @@ class PropertyDetail extends StatelessWidget {
                   height: 3,
                 ),
               ),
-              _buildTenantDetails(),
+              _buildTenantDetails(context),
             ],
           ),
         ),

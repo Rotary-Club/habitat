@@ -22,6 +22,7 @@ class _HomeSetUpState extends State<HomeBottomNavigation> {
     MyHomePage(),
     MyHomePage(),
     MyHomePage(),
+    MyHomePage(),
   ];
 
   @override
@@ -59,7 +60,11 @@ class _HomeSetUpState extends State<HomeBottomNavigation> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Feather.book),
-            title: AppText('Reports', fontSize: 13),
+            title: AppText('Issues', fontSize: 13),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Feather.heart),
+            title: AppText('People', fontSize: 13),
           ),
           BottomNavigationBarItem(
             icon: Icon(Feather.user),

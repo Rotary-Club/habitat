@@ -26,7 +26,7 @@ class AppActionButton extends StatelessWidget {
     return Container(
       width: isMaxSize ? maxWidth(context) : null,
       child: RaisedButton(
-        color: AppColor.blue,
+        color: color ?? AppColor.blue,
         onPressed: function,
         child: Container(
           margin: margin ?? EdgeInsets.symmetric(vertical: 14),
