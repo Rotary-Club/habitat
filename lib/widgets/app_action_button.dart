@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habitat/themes/app_theme.dart';
-import 'package:habitat/util/utils.dart';
+import 'package:habitat/utils/utils.dart';
 
 class AppActionButton extends StatelessWidget {
   final String title;
