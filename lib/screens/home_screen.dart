@@ -200,90 +200,78 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       child: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
+              AppText(
+                'Hello, Gary!',
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+              ),
               Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                 ),
                 child: AppPicture(
-                  width: 48,
-                  height: 48,
+                  width: 56,
+                  height: 56,
                   isCustomBorderRadius: true,
                   customeBorderRadius: BorderRadius.all(Radius.circular(60.0)),
                   image:
                       'https://www.straitstimes.com/sites/default/files/styles/article_pictrure_780x520_/public/articles/2019/05/31/st_20190531_trend311t5b_4878396.jpg?itok=W3PepKXp&timestamp=1559235671',
                 ),
               ),
-              AppWidthSizedBox.smallBox,
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  AppText('Kim Jong Un'),
-                  AppText(
-                    'Super Rich Landlord',
-                    color: AppColor.grey,
-                  ),
-                ],
-              ),
-              Expanded(
-                child: Container(),
-              ),
-              Icon(
-                AntDesign.notification,
-              ),
             ],
           ),
-          AppHeightSizedBox.mediumBox,
-          Container(
-            height: 100,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: AppBorderRadius.normal,
-              color: AppColor.white,
-              boxShadow: AppBoxShadow.normal,
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    AppText(
-                      '10',
-                      color: AppColor.blue,
-                      fontSize: 20,
-                    ),
-                    AppText(
-                      'Rented',
-                      color: AppColor.grey,
-                      fontSize: 12,
-                    ),
-                  ],
-                ),
-                Container(
-                  height: 30,
-                  width: 0.2,
-                  color: Colors.grey,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    AppText(
-                      '1',
-                      color: AppColor.blue,
-                      fontSize: 20,
-                    ),
-                    AppText(
-                      'Renting',
-                      color: AppColor.grey,
-                      fontSize: 12,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          )
+          // AppHeightSizedBox.mediumBox,
+          // Container(
+          //   height: 100,
+          //   width: double.infinity,
+          //   decoration: BoxDecoration(
+          //     borderRadius: AppBorderRadius.normal,
+          //     color: AppColor.white,
+          //     boxShadow: AppBoxShadow.normal,
+          //   ),
+          //   child: Row(
+          //     crossAxisAlignment: CrossAxisAlignment.center,
+          //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //     children: [
+          //       Column(
+          //         mainAxisAlignment: MainAxisAlignment.center,
+          //         children: [
+          //           AppText(
+          //             '10',
+          //             color: AppColor.blue,
+          //             fontSize: 20,
+          //           ),
+          //           AppText(
+          //             'Rented',
+          //             color: AppColor.grey,
+          //             fontSize: 12,
+          //           ),
+          //         ],
+          //       ),
+          //       Container(
+          //         height: 30,
+          //         width: 0.2,
+          //         color: Colors.grey,
+          //       ),
+          //       Column(
+          //         mainAxisAlignment: MainAxisAlignment.center,
+          //         children: [
+          //           AppText(
+          //             '1',
+          //             color: AppColor.blue,
+          //             fontSize: 20,
+          //           ),
+          //           AppText(
+          //             'Renting',
+          //             color: AppColor.grey,
+          //             fontSize: 12,
+          //           ),
+          //         ],
+          //       ),
+          //   ],
+          // ),
         ],
       ),
     );
@@ -331,75 +319,170 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return AppScaffold(
-      appBar: false,
-      backgroundColor: Colors.white,
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              // Expanded(
-              //   child: MediaQuery.removePadding(
-              //     context: context,
-              //     removeTop: true,
-              //     child: ListView.builder(
-              //         itemCount: 4,
-              //         itemBuilder: (context, i) =>
-              //             _buildPropertyListItem(context, i)),
-              //   ),
-              // ),
-              _buildAvatar(),
-              _buildSearchBar(context),
-              AppHeightSizedBox.smallBox,
-              GridView(
-                padding: const EdgeInsets.only(top: 0, left: 12, right: 12),
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                children: List<Widget>.generate(
-                  homeList.length,
-                  (int index) {
-                    final int count = homeList.length;
-                    final Animation<double> animation =
-                        Tween<double>(begin: 0.0, end: 1.0).animate(
-                      CurvedAnimation(
-                        parent: animationController,
-                        curve: Interval((1 / count) * index, 1.0,
-                            curve: Curves.fastOutSlowIn),
-                      ),
-                    );
-                    animationController.forward();
-                    return HomeListView(
-                      animation: animation,
-                      animationController: animationController,
-                      listData: homeList[index],
-                      callBack: () {
-                        Navigator.push<dynamic>(
-                          context,
-                          MaterialPageRoute<dynamic>(
-                            builder: (BuildContext context) => PropertyDetail(),
-                          ),
-                        );
-                      },
-                    );
-                  },
-                ),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 1,
-                  mainAxisSpacing: 12.0,
-                  crossAxisSpacing: 12.0,
-                  childAspectRatio: 3.6,
-                ),
-              ),
-            ],
-          ),
+  Widget _buildTabBar() {
+    return TabBar(
+      unselectedLabelColor: AppColor.blue,
+      labelColor: AppColor.blue,
+      labelStyle: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+      ),
+      unselectedLabelStyle: TextStyle(
+        fontSize: 15,
+      ),
+      tabs: <Widget>[
+        _buildTabContainer('Tenant'),
+        _buildTabContainer('Landlord'),
+      ],
+    );
+  }
+
+  Widget _buildTabContainer(String title) {
+    return Tab(
+      child: Container(
+        child: Align(
+          alignment: Alignment.center,
+          child: Text(title),
         ),
       ),
+    );
+  }
+
+  Widget _buildTenantDetails(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          // Expanded(
+          //   child: MediaQuery.removePadding(
+          //     context: context,
+          //     removeTop: true,
+          //     child: ListView.builder(
+          //         itemCount: 4,
+          //         itemBuilder: (context, i) =>
+          //             _buildPropertyListItem(context, i)),
+          //   ),
+          // ),
+          _buildSearchBar(context),
+          AppHeightSizedBox.smallBox,
+          GridView(
+            padding: const EdgeInsets.only(top: 0, left: 12, right: 12),
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            children: List<Widget>.generate(
+              homeList.length,
+              (int index) {
+                final int count = homeList.length;
+                final Animation<double> animation =
+                    Tween<double>(begin: 0.0, end: 1.0).animate(
+                  CurvedAnimation(
+                    parent: animationController,
+                    curve: Interval((1 / count) * index, 1.0,
+                        curve: Curves.fastOutSlowIn),
+                  ),
+                );
+                animationController.forward();
+                return HomeListView(
+                  animation: animation,
+                  animationController: animationController,
+                  listData: homeList[index],
+                  callBack: () {
+                    Navigator.push<dynamic>(
+                      context,
+                      MaterialPageRoute<dynamic>(
+                        builder: (BuildContext context) => PropertyDetail(),
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 1,
+              mainAxisSpacing: 12.0,
+              crossAxisSpacing: 12.0,
+              childAspectRatio: 3.6,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildLandlordDetail(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          _buildSearchBar(context),
+          AppHeightSizedBox.smallBox,
+          GridView(
+            padding: const EdgeInsets.only(top: 0, left: 12, right: 12),
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            children: List<Widget>.generate(
+              homeList.length,
+              (int index) {
+                final int count = homeList.length;
+                final Animation<double> animation =
+                    Tween<double>(begin: 0.0, end: 1.0).animate(
+                  CurvedAnimation(
+                    parent: animationController,
+                    curve: Interval((1 / count) * index, 1.0,
+                        curve: Curves.fastOutSlowIn),
+                  ),
+                );
+                animationController.forward();
+                return HomeListView(
+                  animation: animation,
+                  animationController: animationController,
+                  listData: homeList[index],
+                  callBack: () {
+                    Navigator.push<dynamic>(
+                      context,
+                      MaterialPageRoute<dynamic>(
+                        builder: (BuildContext context) => PropertyDetail(),
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 1,
+              mainAxisSpacing: 12.0,
+              crossAxisSpacing: 12.0,
+              childAspectRatio: 3.6,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMainContainer(BuildContext context) {
+    return TabBarView(
+      children: [
+        _buildTenantDetails(context),
+        _buildLandlordDetail(context),
+      ],
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 2,
+      child: AppScaffold(
+          appBar: true,
+          titleChild: SafeArea(child: _buildAvatar()),
+          tabBar: _buildTabBar(),
+          backgroundColor: Colors.white,
+          child: _buildMainContainer(context)),
     );
   }
 
