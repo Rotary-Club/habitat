@@ -337,29 +337,30 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     return AppScaffold(
       appBar: false,
       backgroundColor: Colors.white,
-      child: Padding(
-        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            // Expanded(
-            //   child: MediaQuery.removePadding(
-            //     context: context,
-            //     removeTop: true,
-            //     child: ListView.builder(
-            //         itemCount: 4,
-            //         itemBuilder: (context, i) =>
-            //             _buildPropertyListItem(context, i)),
-            //   ),
-            // ),
-            _buildAvatar(),
-            _buildSearchBar(context),
-            AppHeightSizedBox.smallBox,
-            Flexible(
-              child: GridView(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              // Expanded(
+              //   child: MediaQuery.removePadding(
+              //     context: context,
+              //     removeTop: true,
+              //     child: ListView.builder(
+              //         itemCount: 4,
+              //         itemBuilder: (context, i) =>
+              //             _buildPropertyListItem(context, i)),
+              //   ),
+              // ),
+              _buildAvatar(),
+              _buildSearchBar(context),
+              AppHeightSizedBox.smallBox,
+              GridView(
                 padding: const EdgeInsets.only(top: 0, left: 12, right: 12),
-                physics: const BouncingScrollPhysics(),
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 children: List<Widget>.generate(
                   homeList.length,
@@ -396,8 +397,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   childAspectRatio: 3.6,
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
