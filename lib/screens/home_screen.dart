@@ -323,6 +323,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     return TabBar(
       unselectedLabelColor: AppColor.blue,
       labelColor: AppColor.blue,
+      indicatorSize: TabBarIndicatorSize.label,
       labelStyle: TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.bold,
@@ -477,12 +478,15 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-      child: AppScaffold(
-          appBar: true,
-          titleChild: SafeArea(child: _buildAvatar()),
-          tabBar: _buildTabBar(),
-          backgroundColor: Colors.white,
-          child: _buildMainContainer(context)),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 16.0),
+        child: AppScaffold(
+            appBar: true,
+            titleChild: SafeArea(child: _buildAvatar()),
+            tabBar: _buildTabBar(),
+            backgroundColor: Colors.white,
+            child: _buildMainContainer(context)),
+      ),
     );
   }
 
