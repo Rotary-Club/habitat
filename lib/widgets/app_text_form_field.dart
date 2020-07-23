@@ -4,6 +4,8 @@ import 'package:habitat/themes/app_theme.dart';
 
 class AppTextFormField extends StatelessWidget {
   final String hint;
+  final String suffixText;
+  final String prefixText;
   final String initialValue;
   final bool isObscureText;
   final bool isEmailFormat;
@@ -27,6 +29,8 @@ class AppTextFormField extends StatelessWidget {
 
   AppTextFormField(
     this.hint, {
+    this.suffixText,
+    this.prefixText,
     this.initialValue,
     this.isObscureText: false,
     this.isEmailFormat: false,
@@ -60,7 +64,10 @@ class AppTextFormField extends StatelessWidget {
       ),
       child: TextFormField(
         initialValue: initialValue,
+        onSaved: onSave,
         decoration: InputDecoration(
+          suffixText: suffixText,
+          prefixText: prefixText,
           labelText: hint,
           fillColor: Colors.white,
           border: InputBorder.none,
