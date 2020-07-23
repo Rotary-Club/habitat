@@ -24,7 +24,7 @@ class SearchBar extends StatelessWidget {
     this.padding,
     this.backgroundColor,
     this.searBarBackgroundColor,
-    this.fontColor,
+    this.fontColor = AppColor.black,
     this.borderColor,
   }) : super(key: key);
 
@@ -46,7 +46,7 @@ class SearchBar extends StatelessWidget {
           controller: searchController,
           onChanged: onChanged,
           style: TextStyle(
-            color: fontColor ?? AppColor.black,
+            color: fontColor,
           ),
           focusNode: searchFocus == null ? null : searchFocus,
           decoration: InputDecoration(
@@ -54,11 +54,15 @@ class SearchBar extends StatelessWidget {
               borderSide: BorderSide(
                   color: borderColor ?? Colors.transparent, width: 0.0),
             ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: AppColor.accent, width: 1.5),
+              borderRadius: AppBorderRadius.normal,
+            ),
             floatingLabelBehavior: FloatingLabelBehavior.never,
             fillColor: Colors.white,
             hintText: hintText,
             hintStyle: TextStyle(
-              color: fontColor ?? AppColor.black,
+              color: fontColor.withOpacity(0.3),
             ),
             contentPadding: EdgeInsets.all(4),
             prefixIcon: Icon(

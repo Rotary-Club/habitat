@@ -308,7 +308,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               searchFocus: searchFocus,
               searchController: searchController,
               searBarBackgroundColor: AppColor.white,
-              fontColor: AppColor.grey.withOpacity(0.7),
+              fontColor: AppColor.darkGrey,
               onChanged: (String str) {},
             ),
           ),
