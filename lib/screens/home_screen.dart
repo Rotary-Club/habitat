@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:habitat/screens/property_detail.dart';
 import 'package:habitat/themes/app_theme.dart';
-import 'package:habitat/widgets/app_category_tag.dart';
 import 'package:habitat/widgets/app_picture.dart';
 import 'package:habitat/widgets/app_scaffold.dart';
 import 'package:habitat/widgets/app_text.dart';
@@ -101,99 +100,99 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     super.dispose();
   }
 
-  Widget _buildPropertyListItem(BuildContext context, int i) {
-    return InkWell(
-      // onTap: () => Navigator.push(
-      //     context,
-      //     MaterialPageRoute(
-      //         builder: (context) => PropertyDetail(
-      //               tag: i.toString(),
-      //             ))),
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 8,
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-            color: AppTheme.white,
-            boxShadow: AppBoxShadow.normal,
-            borderRadius: AppBorderRadius.normal,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Stack(
-                children: [
-                  Hero(
-                    tag: i.toString(),
-                    child: AppPicture(
-                      width: double.infinity,
-                      image:
-                          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
-                    ),
-                  ),
-                  Positioned(
-                    top: 16,
-                    right: 16,
-                    child: AppCategoryTag('Renting'),
-                  ),
-                ],
-              ),
-              Divider(
-                height: 1,
-              ),
-              Container(
-                margin: EdgeInsets.all(16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        AppText(
-                          'Taman Ukay Bistari',
-                          fontSize: 18,
-                        ),
-                        AppHeightSizedBox.extraSmallBox,
-                        AppText(
-                          'Ampang, Selangor',
-                          color: Colors.grey,
-                          fontSize: 12,
-                        ),
-                        AppText(
-                          'tenant Name      : Putra',
-                          color: Colors.grey,
-                          fontSize: 12,
-                        ),
-                        AppText(
-                          'Tenancy Period  : Nov 2017 - Nov 2020',
-                          color: Colors.grey,
-                          fontSize: 12,
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        AppText(
-                          'RM1500',
-                          fontSize: 18,
-                        ),
-                        AppText(
-                          'Per month',
-                          color: Colors.grey,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget _buildPropertyListItem(BuildContext context, int i) {
+  //   return InkWell(
+  //     // onTap: () => Navigator.push(
+  //     //     context,
+  //     //     MaterialPageRoute(
+  //     //         builder: (context) => PropertyDetail(
+  //     //               tag: i.toString(),
+  //     //             ))),
+  //     child: Padding(
+  //       padding: EdgeInsets.symmetric(
+  //         horizontal: 16,
+  //         vertical: 8,
+  //       ),
+  //       child: Container(
+  //         decoration: BoxDecoration(
+  //           color: AppTheme.white,
+  //           boxShadow: AppBoxShadow.normal,
+  //           borderRadius: AppBorderRadius.normal,
+  //         ),
+  //         child: Column(
+  //           crossAxisAlignment: CrossAxisAlignment.start,
+  //           children: [
+  //             Stack(
+  //               children: [
+  //                 Hero(
+  //                   tag: i.toString(),
+  //                   child: AppPicture(
+  //                     width: double.infinity,
+  //                     image:
+  //                         'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
+  //                   ),
+  //                 ),
+  //                 Positioned(
+  //                   top: 16,
+  //                   right: 16,
+  //                   child: AppCategoryTag('Renting'),
+  //                 ),
+  //               ],
+  //             ),
+  //             Divider(
+  //               height: 1,
+  //             ),
+  //             Container(
+  //               margin: EdgeInsets.all(16),
+  //               child: Row(
+  //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //                 children: [
+  //                   Column(
+  //                     crossAxisAlignment: CrossAxisAlignment.start,
+  //                     children: [
+  //                       AppText(
+  //                         'Taman Ukay Bistari',
+  //                         fontSize: 18,
+  //                       ),
+  //                       AppHeightSizedBox.extraSmallBox,
+  //                       AppText(
+  //                         'Ampang, Selangor',
+  //                         color: Colors.grey,
+  //                         fontSize: 12,
+  //                       ),
+  //                       AppText(
+  //                         'tenant Name      : Putra',
+  //                         color: Colors.grey,
+  //                         fontSize: 12,
+  //                       ),
+  //                       AppText(
+  //                         'Tenancy Period  : Nov 2017 - Nov 2020',
+  //                         color: Colors.grey,
+  //                         fontSize: 12,
+  //                       ),
+  //                     ],
+  //                   ),
+  //                   Column(
+  //                     children: [
+  //                       AppText(
+  //                         'RM1500',
+  //                         fontSize: 18,
+  //                       ),
+  //                       AppText(
+  //                         'Per month',
+  //                         color: Colors.grey,
+  //                       ),
+  //                     ],
+  //                   ),
+  //                 ],
+  //               ),
+  //             ),
+  //           ],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
   Widget _buildAvatar() {
     return Padding(
@@ -201,90 +200,78 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       child: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
+              AppText(
+                'Hello, Gary!',
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+              ),
               Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                 ),
                 child: AppPicture(
-                  width: 48,
-                  height: 48,
+                  width: 56,
+                  height: 56,
                   isCustomBorderRadius: true,
                   customeBorderRadius: BorderRadius.all(Radius.circular(60.0)),
                   image:
                       'https://www.straitstimes.com/sites/default/files/styles/article_pictrure_780x520_/public/articles/2019/05/31/st_20190531_trend311t5b_4878396.jpg?itok=W3PepKXp&timestamp=1559235671',
                 ),
               ),
-              AppWidthSizedBox.smallBox,
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  AppText('Kim Jong Un'),
-                  AppText(
-                    'Super Rich Landlord',
-                    color: AppColor.grey,
-                  ),
-                ],
-              ),
-              Expanded(
-                child: Container(),
-              ),
-              Icon(
-                AntDesign.notification,
-              ),
             ],
           ),
-          AppHeightSizedBox.mediumBox,
-          Container(
-            height: 100,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: AppBorderRadius.normal,
-              color: AppColor.white,
-              boxShadow: AppBoxShadow.normal,
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    AppText(
-                      '10',
-                      color: AppColor.blue,
-                      fontSize: 20,
-                    ),
-                    AppText(
-                      'Rented',
-                      color: AppColor.grey,
-                      fontSize: 12,
-                    ),
-                  ],
-                ),
-                Container(
-                  height: 30,
-                  width: 0.2,
-                  color: Colors.grey,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    AppText(
-                      '1',
-                      color: AppColor.blue,
-                      fontSize: 20,
-                    ),
-                    AppText(
-                      'Renting',
-                      color: AppColor.grey,
-                      fontSize: 12,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          )
+          // AppHeightSizedBox.mediumBox,
+          // Container(
+          //   height: 100,
+          //   width: double.infinity,
+          //   decoration: BoxDecoration(
+          //     borderRadius: AppBorderRadius.normal,
+          //     color: AppColor.white,
+          //     boxShadow: AppBoxShadow.normal,
+          //   ),
+          //   child: Row(
+          //     crossAxisAlignment: CrossAxisAlignment.center,
+          //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //     children: [
+          //       Column(
+          //         mainAxisAlignment: MainAxisAlignment.center,
+          //         children: [
+          //           AppText(
+          //             '10',
+          //             color: AppColor.blue,
+          //             fontSize: 20,
+          //           ),
+          //           AppText(
+          //             'Rented',
+          //             color: AppColor.grey,
+          //             fontSize: 12,
+          //           ),
+          //         ],
+          //       ),
+          //       Container(
+          //         height: 30,
+          //         width: 0.2,
+          //         color: Colors.grey,
+          //       ),
+          //       Column(
+          //         mainAxisAlignment: MainAxisAlignment.center,
+          //         children: [
+          //           AppText(
+          //             '1',
+          //             color: AppColor.blue,
+          //             fontSize: 20,
+          //           ),
+          //           AppText(
+          //             'Renting',
+          //             color: AppColor.grey,
+          //             fontSize: 12,
+          //           ),
+          //         ],
+          //       ),
+          //   ],
+          // ),
         ],
       ),
     );
@@ -332,74 +319,173 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return AppScaffold(
-      appBar: false,
-      backgroundColor: Colors.white,
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              // Expanded(
-              //   child: MediaQuery.removePadding(
-              //     context: context,
-              //     removeTop: true,
-              //     child: ListView.builder(
-              //         itemCount: 4,
-              //         itemBuilder: (context, i) =>
-              //             _buildPropertyListItem(context, i)),
-              //   ),
-              // ),
-              _buildAvatar(),
-              _buildSearchBar(context),
-              AppHeightSizedBox.smallBox,
-              GridView(
-                padding: const EdgeInsets.only(top: 0, left: 12, right: 12),
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                children: List<Widget>.generate(
-                  homeList.length,
-                  (int index) {
-                    final int count = homeList.length;
-                    final Animation<double> animation =
-                        Tween<double>(begin: 0.0, end: 1.0).animate(
-                      CurvedAnimation(
-                        parent: animationController,
-                        curve: Interval((1 / count) * index, 1.0,
-                            curve: Curves.fastOutSlowIn),
+  Widget _buildTabBar() {
+    return TabBar(
+      unselectedLabelColor: AppColor.blue,
+      labelColor: AppColor.blue,
+      indicatorSize: TabBarIndicatorSize.label,
+      labelStyle: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+      ),
+      unselectedLabelStyle: TextStyle(
+        fontSize: 15,
+      ),
+      tabs: <Widget>[
+        _buildTabContainer('Tenant'),
+        _buildTabContainer('Landlord'),
+      ],
+    );
+  }
+
+  Widget _buildTabContainer(String title) {
+    return Tab(
+      child: Container(
+        child: Align(
+          alignment: Alignment.center,
+          child: Text(title),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTenantDetails(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          // Expanded(
+          //   child: MediaQuery.removePadding(
+          //     context: context,
+          //     removeTop: true,
+          //     child: ListView.builder(
+          //         itemCount: 4,
+          //         itemBuilder: (context, i) =>
+          //             _buildPropertyListItem(context, i)),
+          //   ),
+          // ),
+          _buildSearchBar(context),
+          AppHeightSizedBox.smallBox,
+          GridView(
+            padding: const EdgeInsets.only(top: 0, left: 12, right: 12),
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            children: List<Widget>.generate(
+              homeList.length,
+              (int index) {
+                final int count = homeList.length;
+                final Animation<double> animation =
+                    Tween<double>(begin: 0.0, end: 1.0).animate(
+                  CurvedAnimation(
+                    parent: animationController,
+                    curve: Interval((1 / count) * index, 1.0,
+                        curve: Curves.fastOutSlowIn),
+                  ),
+                );
+                animationController.forward();
+                return HomeListView(
+                  animation: animation,
+                  animationController: animationController,
+                  listData: homeList[index],
+                  callBack: () {
+                    Navigator.push<dynamic>(
+                      context,
+                      MaterialPageRoute<dynamic>(
+                        builder: (BuildContext context) => PropertyDetail(),
                       ),
                     );
-                    animationController.forward();
-                    return HomeListView(
-                      animation: animation,
-                      animationController: animationController,
-                      listData: homeList[index],
-                      callBack: () {
-                        Navigator.push<dynamic>(
-                          context,
-                          MaterialPageRoute<dynamic>(
-                            builder: (BuildContext context) => PropertyDetail(),
-                          ),
-                        );
-                      },
+                  },
+                );
+              },
+            ),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 1,
+              mainAxisSpacing: 12.0,
+              crossAxisSpacing: 12.0,
+              childAspectRatio: 3.6,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildLandlordDetail(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          _buildSearchBar(context),
+          AppHeightSizedBox.smallBox,
+          GridView(
+            padding: const EdgeInsets.only(top: 0, left: 12, right: 12),
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            children: List<Widget>.generate(
+              homeList.length,
+              (int index) {
+                final int count = homeList.length;
+                final Animation<double> animation =
+                    Tween<double>(begin: 0.0, end: 1.0).animate(
+                  CurvedAnimation(
+                    parent: animationController,
+                    curve: Interval((1 / count) * index, 1.0,
+                        curve: Curves.fastOutSlowIn),
+                  ),
+                );
+                animationController.forward();
+                return HomeListView(
+                  animation: animation,
+                  animationController: animationController,
+                  listData: homeList[index],
+                  callBack: () {
+                    Navigator.push<dynamic>(
+                      context,
+                      MaterialPageRoute<dynamic>(
+                        builder: (BuildContext context) => PropertyDetail(),
+                      ),
                     );
                   },
-                ),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 1,
-                  mainAxisSpacing: 12.0,
-                  crossAxisSpacing: 12.0,
-                  childAspectRatio: 3.6,
-                ),
-              ),
-            ],
+                );
+              },
+            ),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 1,
+              mainAxisSpacing: 12.0,
+              crossAxisSpacing: 12.0,
+              childAspectRatio: 3.6,
+            ),
           ),
-        ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMainContainer(BuildContext context) {
+    return TabBarView(
+      children: [
+        _buildTenantDetails(context),
+        _buildLandlordDetail(context),
+      ],
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 2,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 16.0),
+        child: AppScaffold(
+            appBar: true,
+            titleChild: SafeArea(child: _buildAvatar()),
+            tabBar: _buildTabBar(),
+            backgroundColor: Colors.white,
+            child: _buildMainContainer(context)),
       ),
     );
   }

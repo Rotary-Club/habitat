@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:habitat/home_bottom_navigation.dart';
+import 'package:habitat/screens/home_bottom_navigation.dart';
 
 void main() {
   runApp(HabitatApp());

@@ -44,6 +44,35 @@ class AppTenantDetailContainer extends StatelessWidget {
                     color: AppColor.grey,
                     fontSize: 12,
                   ),
+                  AppHeightSizedBox.mediumBox,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(top: 16),
+                        decoration: BoxDecoration(
+                          color: AppColor.green,
+                          borderRadius: AppBorderRadius.small,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(6.0),
+                          child: AppText(
+                            'RM1500 / M',
+                            color: AppColor.white,
+                            fontSize: 11,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(6.0),
+                        child: AppText('Rented'),
+                      ),
+                      Icon(
+                        Icons.notification_important,
+                        color: AppColor.red,
+                      )
+                    ],
+                  ),
                 ],
               ),
             ],

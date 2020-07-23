@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:habitat/screens/home_screen.dart';
+import 'package:habitat/screens/People.dart';
+import 'package:habitat/screens/issues.dart';
+import 'package:habitat/screens/profile.dart';
 import 'package:habitat/themes/app_theme.dart';
 import 'package:habitat/widgets/app_text.dart';
 
@@ -20,8 +23,9 @@ class _HomeSetUpState extends State<HomeBottomNavigation> {
 
   List<Widget> widgetList = [
     MyHomePage(),
-    MyHomePage(),
-    MyHomePage(),
+    IssuePage(),
+    TenantsPage(),
+    ProfilePage(),
   ];
 
   @override
@@ -59,7 +63,11 @@ class _HomeSetUpState extends State<HomeBottomNavigation> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Feather.book),
-            title: AppText('Reports', fontSize: 13),
+            title: AppText('Issues', fontSize: 13),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Feather.heart),
+            title: AppText('People', fontSize: 13),
           ),
           BottomNavigationBarItem(
             icon: Icon(Feather.user),
