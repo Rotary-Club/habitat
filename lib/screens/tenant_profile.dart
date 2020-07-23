@@ -85,22 +85,27 @@ class TenantProfilePage extends StatelessWidget {
           AppTextFormField(
             'Company (Optional)',
             initialValue: 'Prince Court Hospital',
+            isDropDown: true,
           ),
           AppTextFormField(
             'Job (Optional)',
             initialValue: 'Gum Speciallist',
+            isDropDown: true,
           ),
           AppTextFormField(
             'Rental Payment',
             initialValue: 'Monthly',
+            isDropDown: true,
           ),
           AppTextFormField(
             'Bank Name',
             initialValue: 'Maybank',
+            isDropDown: true,
           ),
           AppTextFormField(
             'Bank Account',
             initialValue: '1560 1100 8888',
+            isDropDown: true,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -121,6 +126,7 @@ class TenantProfilePage extends StatelessWidget {
           AppTextFormField(
             'Relationship',
             initialValue: 'Cousin',
+            isDropDown: true,
           ),
           AppTenantDetailContainer(),
         ],

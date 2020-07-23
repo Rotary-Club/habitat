@@ -23,7 +23,7 @@ class ContractSummaryPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AppText(
-                    'Contract Terms',
+                    'Contract Details',
                     fontWeight: FontWeight.bold,
                   ),
                   Row(
@@ -42,10 +42,6 @@ class ContractSummaryPage extends StatelessWidget {
                         ),
                       ),
                     ],
-                  ),
-                  AppTextFormField(
-                    'Contract Date',
-                    initialValue: 'July 25, 2020 - July, 2021',
                   ),
                   Row(
                     children: [
@@ -82,17 +78,22 @@ class ContractSummaryPage extends StatelessWidget {
                     ],
                   ),
                   AppTextFormField(
+                    'Contract Date',
+                    initialValue: 'July 25, 2020 - July, 2021',
+                  ),
+                  AppTextFormField(
                     'Rental Payment',
-                    initialValue: 'Before 7th of every month',
+                    initialValue: 'Monthly',
+                    isDropDown: true,
                   ),
                   AppTextFormField(
                     'Payment To',
-                    initialValue: 'Malayan Banking Berhad  1560 1100 8888',
+                    initialValue: 'Maybank  1560 1100 8888',
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
                     child: AppText(
-                      'tenant Details',
+                      'Tenant Details',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -130,22 +131,16 @@ class ContractSummaryPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Row(
-                    children: [
-                      Flexible(
-                        child: AppTextFormField(
-                          'Company',
-                          initialValue: 'Prince Court Hospital',
-                        ),
-                      ),
-                      AppWidthSizedBox.smallBox,
-                      Flexible(
-                        child: AppTextFormField(
-                          'Job Position',
-                          initialValue: 'Gum Specialist',
-                        ),
-                      ),
-                    ],
+                  AppTextFormField(
+                    'Company',
+                    initialValue: 'Prince Court Hospital',
+                    isDropDown: true,
+                  ),
+                  AppWidthSizedBox.smallBox,
+                  AppTextFormField(
+                    'Job Position',
+                    initialValue: 'Gum Specialist',
+                    isDropDown: true,
                   ),
                   AppHeightSizedBox.smallBox,
                   Padding(
@@ -185,6 +180,7 @@ class ContractSummaryPage extends StatelessWidget {
                         child: AppTextFormField(
                           'Relationship',
                           initialValue: 'Cousin',
+                          isDropDown: true,
                         ),
                       ),
                     ],
@@ -205,7 +201,7 @@ class ContractSummaryPage extends StatelessWidget {
                         ),
                       );
                     },
-                    title: 'Review & Share',
+                    title: 'Generate PDF',
                     isMaxSize: true,
                   ),
                 ],

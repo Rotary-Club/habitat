@@ -25,16 +25,18 @@ class ContractTermPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AppText(
-                    'Contract Terms',
+                    'Contract Details',
                     fontWeight: FontWeight.bold,
                   ),
                   AppTextFormField(
-                    'Contract Duration',
-                    initialValue: '1 Year',
+                    'Rentail Duration',
+                    initialValue: '2 Years',
+                    isDropDown: true,
                   ),
                   AppTextFormField(
-                    'Contract Extensino',
+                    'Optional Extension',
                     initialValue: '1 Year',
+                    isDropDown: true,
                   ),
                   Row(
                     children: [
@@ -60,18 +62,27 @@ class ContractTermPage extends StatelessWidget {
                   AppTextFormField(
                     'Security Deposit',
                     initialValue: '2 months',
+                    isDropDown: true,
                   ),
                   AppTextFormField(
                     'Utility Deposit',
-                    initialValue: '0.5 month',
+                    initialValue: '2 months',
+                    isDropDown: true,
                   ),
                   AppTextFormField(
                     'Rental Payment',
-                    initialValue: 'Before 7th of every month',
+                    initialValue: 'Monthly',
+                    isDropDown: true,
                   ),
                   AppTextFormField(
                     'Bank Name',
-                    initialValue: 'Malayan Banking Berhad',
+                    initialValue: 'Maybank',
+                    isDropDown: true,
+                  ),
+                  AppTextFormField(
+                    'Bank Account',
+                    initialValue: '1560 1100 8888',
+                    isDropDown: true,
                   ),
                   AppHeightSizedBox.smallBox,
                   AppActionButton(

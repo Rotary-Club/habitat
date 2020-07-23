@@ -24,6 +24,7 @@ class AppTextFormField extends StatelessWidget {
   final double bottomMargin;
   final double leftMargin;
   final InputDecoration customStyle;
+  final bool isDropDown;
 
   AppTextFormField(
     this.hint, {
@@ -47,38 +48,55 @@ class AppTextFormField extends StatelessWidget {
     this.bottomMargin: 0,
     this.leftMargin: 0,
     this.customStyle,
+    this.isDropDown: false,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: 12),
-      decoration: BoxDecoration(
-        boxShadow: AppBoxShadow.normal,
-        color: AppColor.white,
-        borderRadius: AppBorderRadius.oval,
-      ),
-      child: TextFormField(
-        initialValue: initialValue,
-        decoration: InputDecoration(
-          labelText: hint,
-          fillColor: Colors.white,
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.symmetric(horizontal: 17, vertical: 13),
-          //fillColor: Colors.green
+    return Stack(
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 12),
+          decoration: BoxDecoration(
+            boxShadow: AppBoxShadow.normal,
+            color: AppColor.white,
+            borderRadius: AppBorderRadius.oval,
+          ),
+          child: TextFormField(
+            initialValue: initialValue,
+            decoration: InputDecoration(
+              labelText: hint,
+              fillColor: Colors.white,
+              border: InputBorder.none,
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 17, vertical: 13),
+              //fillColor: Colors.green
+            ),
+            validator: (val) {
+              if (val.length == 0) {
+                return "Email cannot be empty";
+              } else {
+                return null;
+              }
+            },
+            keyboardType: TextInputType.emailAddress,
+            style: TextStyle(
+              fontFamily: "Poppins",
+            ),
+          ),
         ),
-        validator: (val) {
-          if (val.length == 0) {
-            return "Email cannot be empty";
-          } else {
-            return null;
-          }
-        },
-        keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          fontFamily: "Poppins",
-        ),
-      ),
+        if (isDropDown)
+          Positioned.fill(
+            right: 16,
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Icon(
+                Icons.arrow_drop_down_circle,
+                color: AppColor.blue,
+              ),
+            ),
+          )
+      ],
     );
   }
 }

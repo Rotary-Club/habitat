@@ -46,10 +46,12 @@ class ContractTenantDetailPage extends StatelessWidget {
                   AppTextFormField(
                     'Company (Optional)',
                     initialValue: 'Prince Court Medical Centre',
+                    isDropDown: true,
                   ),
                   AppTextFormField(
                     'Job Position (Optional)',
                     initialValue: 'Gum Specialist',
+                    isDropDown: true,
                   ),
                   AppHeightSizedBox.smallBox,
                   Padding(
@@ -74,6 +76,7 @@ class ContractTenantDetailPage extends StatelessWidget {
                   AppTextFormField(
                     'Relationship',
                     initialValue: 'Cousin',
+                    isDropDown: true,
                   ),
                   AppHeightSizedBox.smallBox,
                   AppActionButton(
@@ -85,7 +88,7 @@ class ContractTenantDetailPage extends StatelessWidget {
                         ),
                       );
                     },
-                    title: 'Next',
+                    title: 'Review',
                     isMaxSize: true,
                   ),
                 ],
