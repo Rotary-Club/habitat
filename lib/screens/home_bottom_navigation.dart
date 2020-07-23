@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:habitat/screens/home_screen.dart';
-import 'package:habitat/screens/tenants.dart';
+import 'package:habitat/screens/People.dart';
 import 'package:habitat/themes/app_theme.dart';
 import 'package:habitat/widgets/app_text.dart';
 
