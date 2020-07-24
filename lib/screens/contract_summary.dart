@@ -309,7 +309,7 @@ class _ContractSummaryPageState extends State<ContractSummaryPage> {
                         }
                         return null;
                       },
-                      title: 'Review & Share',
+                      title: 'Review',
                       isMaxSize: true,
                     ),
                   ],
