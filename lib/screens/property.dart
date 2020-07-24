@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:habitat/screens/property_detail.dart';
+import 'package:habitat/screens/update_own_property_detail.dart';
 import 'package:habitat/themes/app_theme.dart';
 import 'package:habitat/widgets/app_picture.dart';
 import 'package:habitat/widgets/app_scaffold.dart';
@@ -18,7 +19,7 @@ class _PropertyPageState extends State<PropertyPage>
     with TickerProviderStateMixin {
   AnimationController animationController;
   bool multiple = true;
-  List<Map<String, dynamic>> homeList = [
+  List<Map<String, dynamic>> rentingList = [
     {
       'id': 1,
       'image':
@@ -26,7 +27,7 @@ class _PropertyPageState extends State<PropertyPage>
       'title': 'Seri Mutiara Apartment',
       'description': 'Shah Alam Selangor',
       'price': '1500',
-      'type': 'For Rent',
+      'type': 'Renting',
     },
     {
       'id': 2,
@@ -35,7 +36,7 @@ class _PropertyPageState extends State<PropertyPage>
       'title': 'Seri Mutiara Apartment',
       'description': 'Shah Alam Selangor',
       'price': '1500',
-      'type': 'For Rent',
+      'type': 'Renting',
     },
     {
       'id': 3,
@@ -44,7 +45,7 @@ class _PropertyPageState extends State<PropertyPage>
       'title': 'Seri Mutiara Apartment',
       'description': 'Shah Alam Selangor',
       'price': '1500',
-      'type': 'For Rent',
+      'type': 'Renting',
     },
     {
       'id': 4,
@@ -53,7 +54,72 @@ class _PropertyPageState extends State<PropertyPage>
       'title': 'Seri Mutiara Apartment',
       'description': 'Shah Alam Selangor',
       'price': '1500',
-      'type': 'For Rent',
+      'type': 'Renting',
+    },
+    {
+      'id': 5,
+      'image':
+          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
+      'title': 'Seri Mutiara Apartment',
+      'description': 'Shah Alam Selangor',
+      'price': '1500',
+      'type': 'Renting',
+    },
+    {
+      'id': 6,
+      'image':
+          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
+      'title': 'Seri Mutiara Apartment',
+      'description': 'Shah Alam Selangor',
+      'price': '1500',
+      'type': 'Renting',
+    },
+    {
+      'id': 7,
+      'image':
+          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
+      'title': 'Seri Mutiara Apartment',
+      'description': 'Shah Alam Selangor',
+      'price': '1500',
+      'type': 'Renting',
+    },
+  ];
+  List<Map<String, dynamic>> ownPropertyList = [
+    {
+      'id': 1,
+      'image':
+          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
+      'title': 'Seri Mutiara Apartment',
+      'description': 'Shah Alam Selangor',
+      'price': '1500',
+      'type': 'Rented',
+    },
+    {
+      'id': 2,
+      'image':
+          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
+      'title': 'Seri Mutiara Apartment',
+      'description': 'Shah Alam Selangor',
+      'price': '1500',
+      'type': 'Rented',
+    },
+    {
+      'id': 3,
+      'image':
+          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
+      'title': 'Seri Mutiara Apartment',
+      'description': 'Shah Alam Selangor',
+      'price': '1500',
+      'type': 'Rented',
+    },
+    {
+      'id': 4,
+      'image':
+          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
+      'title': 'Seri Mutiara Apartment',
+      'description': 'Shah Alam Selangor',
+      'price': '1500',
+      'type': 'Rented',
     },
     {
       'id': 5,
@@ -99,183 +165,6 @@ class _PropertyPageState extends State<PropertyPage>
   void dispose() {
     animationController.dispose();
     super.dispose();
-  }
-
-  // Widget _buildPropertyListItem(BuildContext context, int i) {
-  //   return InkWell(
-  //     // onTap: () => Navigator.push(
-  //     //     context,
-  //     //     MaterialPageRoute(
-  //     //         builder: (context) => PropertyDetail(
-  //     //               tag: i.toString(),
-  //     //             ))),
-  //     child: Padding(
-  //       padding: EdgeInsets.symmetric(
-  //         horizontal: 16,
-  //         vertical: 8,
-  //       ),
-  //       child: Container(
-  //         decoration: BoxDecoration(
-  //           color: AppTheme.white,
-  //           boxShadow: AppBoxShadow.normal,
-  //           borderRadius: AppBorderRadius.normal,
-  //         ),
-  //         child: Column(
-  //           crossAxisAlignment: CrossAxisAlignment.start,
-  //           children: [
-  //             Stack(
-  //               children: [
-  //                 Hero(
-  //                   tag: i.toString(),
-  //                   child: AppPicture(
-  //                     width: double.infinity,
-  //                     image:
-  //                         'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
-  //                   ),
-  //                 ),
-  //                 Positioned(
-  //                   top: 16,
-  //                   right: 16,
-  //                   child: AppCategoryTag('Renting'),
-  //                 ),
-  //               ],
-  //             ),
-  //             Divider(
-  //               height: 1,
-  //             ),
-  //             Container(
-  //               margin: EdgeInsets.all(16),
-  //               child: Row(
-  //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //                 children: [
-  //                   Column(
-  //                     crossAxisAlignment: CrossAxisAlignment.start,
-  //                     children: [
-  //                       AppText(
-  //                         'Taman Ukay Bistari',
-  //                         fontSize: 18,
-  //                       ),
-  //                       AppHeightSizedBox.extraSmallBox,
-  //                       AppText(
-  //                         'Ampang, Selangor',
-  //                         color: Colors.grey,
-  //                         fontSize: 12,
-  //                       ),
-  //                       AppText(
-  //                         'tenant Name      : Putra',
-  //                         color: Colors.grey,
-  //                         fontSize: 12,
-  //                       ),
-  //                       AppText(
-  //                         'Tenancy Period  : Nov 2017 - Nov 2020',
-  //                         color: Colors.grey,
-  //                         fontSize: 12,
-  //                       ),
-  //                     ],
-  //                   ),
-  //                   Column(
-  //                     children: [
-  //                       AppText(
-  //                         'RM1500',
-  //                         fontSize: 18,
-  //                       ),
-  //                       AppText(
-  //                         'Per month',
-  //                         color: Colors.grey,
-  //                       ),
-  //                     ],
-  //                   ),
-  //                 ],
-  //               ),
-  //             ),
-  //           ],
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
-  Widget _buildAvatar() {
-    return Padding(
-      padding: const EdgeInsets.all(28.0),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              AppText(
-                'Hello, Gary!',
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                ),
-                child: AppPicture(
-                  width: 56,
-                  height: 56,
-                  isCustomBorderRadius: true,
-                  customeBorderRadius: BorderRadius.all(Radius.circular(60.0)),
-                  image:
-                      'https://www.straitstimes.com/sites/default/files/styles/article_pictrure_780x520_/public/articles/2019/05/31/st_20190531_trend311t5b_4878396.jpg?itok=W3PepKXp&timestamp=1559235671',
-                ),
-              ),
-            ],
-          ),
-          // AppHeightSizedBox.mediumBox,
-          // Container(
-          //   height: 100,
-          //   width: double.infinity,
-          //   decoration: BoxDecoration(
-          //     borderRadius: AppBorderRadius.normal,
-          //     color: AppColor.white,
-          //     boxShadow: AppBoxShadow.normal,
-          //   ),
-          //   child: Row(
-          //     crossAxisAlignment: CrossAxisAlignment.center,
-          //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //     children: [
-          //       Column(
-          //         mainAxisAlignment: MainAxisAlignment.center,
-          //         children: [
-          //           AppText(
-          //             '10',
-          //             color: AppColor.blue,
-          //             fontSize: 20,
-          //           ),
-          //           AppText(
-          //             'Rented',
-          //             color: AppColor.grey,
-          //             fontSize: 12,
-          //           ),
-          //         ],
-          //       ),
-          //       Container(
-          //         height: 30,
-          //         width: 0.2,
-          //         color: Colors.grey,
-          //       ),
-          //       Column(
-          //         mainAxisAlignment: MainAxisAlignment.center,
-          //         children: [
-          //           AppText(
-          //             '1',
-          //             color: AppColor.blue,
-          //             fontSize: 20,
-          //           ),
-          //           AppText(
-          //             'Renting',
-          //             color: AppColor.grey,
-          //             fontSize: 12,
-          //           ),
-          //         ],
-          //       ),
-          //   ],
-          // ),
-        ],
-      ),
-    );
   }
 
   Widget _buildSearchBar(BuildContext context) {
@@ -332,8 +221,8 @@ class _PropertyPageState extends State<PropertyPage>
         fontSize: 15,
       ),
       tabs: <Widget>[
-        _buildTabContainer('Tenant'),
-        _buildTabContainer('Landlord'),
+        _buildTabContainer('Own Property'),
+        _buildTabContainer('Renting'),
       ],
     );
   }
@@ -349,22 +238,12 @@ class _PropertyPageState extends State<PropertyPage>
     );
   }
 
-  Widget _buildTenantDetails(BuildContext context) {
+  Widget _buildOwnPropertyList(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          // Expanded(
-          //   child: MediaQuery.removePadding(
-          //     context: context,
-          //     removeTop: true,
-          //     child: ListView.builder(
-          //         itemCount: 4,
-          //         itemBuilder: (context, i) =>
-          //             _buildPropertyListItem(context, i)),
-          //   ),
-          // ),
           _buildSearchBar(context),
           AppHeightSizedBox.smallBox,
           GridView(
@@ -373,9 +252,9 @@ class _PropertyPageState extends State<PropertyPage>
             shrinkWrap: true,
             scrollDirection: Axis.vertical,
             children: List<Widget>.generate(
-              homeList.length,
+              ownPropertyList.length,
               (int index) {
-                final int count = homeList.length;
+                final int count = ownPropertyList.length;
                 final Animation<double> animation =
                     Tween<double>(begin: 0.0, end: 1.0).animate(
                   CurvedAnimation(
@@ -388,12 +267,13 @@ class _PropertyPageState extends State<PropertyPage>
                 return HomeListView(
                   animation: animation,
                   animationController: animationController,
-                  listData: homeList[index],
+                  listData: ownPropertyList[index],
                   callBack: () {
                     Navigator.push<dynamic>(
                       context,
                       MaterialPageRoute<dynamic>(
-                        builder: (BuildContext context) => PropertyDetail(),
+                        builder: (BuildContext context) =>
+                            UpdateOwnPropertyDetailsPage(),
                       ),
                     );
                   },
@@ -412,7 +292,7 @@ class _PropertyPageState extends State<PropertyPage>
     );
   }
 
-  Widget _buildLandlordDetail(BuildContext context) {
+  Widget _buildRentingList(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -426,9 +306,9 @@ class _PropertyPageState extends State<PropertyPage>
             shrinkWrap: true,
             scrollDirection: Axis.vertical,
             children: List<Widget>.generate(
-              homeList.length,
+              rentingList.length,
               (int index) {
-                final int count = homeList.length;
+                final int count = rentingList.length;
                 final Animation<double> animation =
                     Tween<double>(begin: 0.0, end: 1.0).animate(
                   CurvedAnimation(
@@ -441,7 +321,7 @@ class _PropertyPageState extends State<PropertyPage>
                 return HomeListView(
                   animation: animation,
                   animationController: animationController,
-                  listData: homeList[index],
+                  listData: rentingList[index],
                   callBack: () {
                     Navigator.push<dynamic>(
                       context,
@@ -468,8 +348,8 @@ class _PropertyPageState extends State<PropertyPage>
   Widget _buildMainContainer(BuildContext context) {
     return TabBarView(
       children: [
-        _buildTenantDetails(context),
-        _buildLandlordDetail(context),
+        _buildOwnPropertyList(context),
+        _buildRentingList(context),
       ],
     );
   }
