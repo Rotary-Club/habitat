@@ -232,8 +232,9 @@ class _PropertyDetailState extends State<PropertyDetail>
                     child: ScaleTransition(
                       alignment: Alignment.center,
                       scale: CurvedAnimation(
-                          parent: animationController,
-                          curve: Curves.fastOutSlowIn),
+                        parent: animationController,
+                        curve: Curves.fastOutSlowIn,
+                      ),
                       child: Container(
                         decoration: BoxDecoration(
                           color: Colors.blue[600],

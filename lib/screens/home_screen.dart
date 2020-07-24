@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:habitat/screens/property_detail.dart';
 import 'package:habitat/themes/app_theme.dart';
+import 'package:habitat/utils/utils.dart';
 import 'package:habitat/widgets/app_picture.dart';
 import 'package:habitat/widgets/app_scaffold.dart';
 import 'package:habitat/widgets/app_text.dart';
-import 'package:habitat/widgets/search_bar.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key key}) : super(key: key);
@@ -16,7 +15,42 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   AnimationController animationController;
+  AnimationController animationController2;
+  Animation<double> animation;
+  double opacity1 = 0.0;
+  double opacity2 = 0.0;
+  double opacity3 = 0.0;
   bool multiple = true;
+
+  @override
+  void initState() {
+    animationController = AnimationController(
+        duration: const Duration(milliseconds: 1500), vsync: this);
+    animationController2 = AnimationController(
+        duration: const Duration(milliseconds: 1000), vsync: this);
+    animation = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+        parent: animationController,
+        curve: Interval(0, 1.0, curve: Curves.fastOutSlowIn)));
+    setData();
+    super.initState();
+  }
+
+  Future<void> setData() async {
+    animationController.forward();
+    await Future<dynamic>.delayed(const Duration(milliseconds: 200));
+    setState(() {
+      opacity1 = 1.0;
+    });
+    await Future<dynamic>.delayed(const Duration(milliseconds: 200));
+    setState(() {
+      opacity2 = 1.0;
+    });
+    await Future<dynamic>.delayed(const Duration(milliseconds: 200));
+    setState(() {
+      opacity3 = 1.0;
+    });
+  }
+
   List<Map<String, dynamic>> homeList = [
     {
       'id': 1,
@@ -82,12 +116,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       'type': 'For Rent',
     },
   ];
-  @override
-  void initState() {
-    animationController = AnimationController(
-        duration: const Duration(milliseconds: 1500), vsync: this);
-    super.initState();
-  }
 
   Future<bool> getData() async {
     await Future<dynamic>.delayed(const Duration(milliseconds: 0));
@@ -99,100 +127,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     animationController.dispose();
     super.dispose();
   }
-
-  // Widget _buildPropertyListItem(BuildContext context, int i) {
-  //   return InkWell(
-  //     // onTap: () => Navigator.push(
-  //     //     context,
-  //     //     MaterialPageRoute(
-  //     //         builder: (context) => PropertyDetail(
-  //     //               tag: i.toString(),
-  //     //             ))),
-  //     child: Padding(
-  //       padding: EdgeInsets.symmetric(
-  //         horizontal: 16,
-  //         vertical: 8,
-  //       ),
-  //       child: Container(
-  //         decoration: BoxDecoration(
-  //           color: AppTheme.white,
-  //           boxShadow: AppBoxShadow.normal,
-  //           borderRadius: AppBorderRadius.normal,
-  //         ),
-  //         child: Column(
-  //           crossAxisAlignment: CrossAxisAlignment.start,
-  //           children: [
-  //             Stack(
-  //               children: [
-  //                 Hero(
-  //                   tag: i.toString(),
-  //                   child: AppPicture(
-  //                     width: double.infinity,
-  //                     image:
-  //                         'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
-  //                   ),
-  //                 ),
-  //                 Positioned(
-  //                   top: 16,
-  //                   right: 16,
-  //                   child: AppCategoryTag('Renting'),
-  //                 ),
-  //               ],
-  //             ),
-  //             Divider(
-  //               height: 1,
-  //             ),
-  //             Container(
-  //               margin: EdgeInsets.all(16),
-  //               child: Row(
-  //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //                 children: [
-  //                   Column(
-  //                     crossAxisAlignment: CrossAxisAlignment.start,
-  //                     children: [
-  //                       AppText(
-  //                         'Taman Ukay Bistari',
-  //                         fontSize: 18,
-  //                       ),
-  //                       AppHeightSizedBox.extraSmallBox,
-  //                       AppText(
-  //                         'Ampang, Selangor',
-  //                         color: Colors.grey,
-  //                         fontSize: 12,
-  //                       ),
-  //                       AppText(
-  //                         'tenant Name      : Putra',
-  //                         color: Colors.grey,
-  //                         fontSize: 12,
-  //                       ),
-  //                       AppText(
-  //                         'Tenancy Period  : Nov 2017 - Nov 2020',
-  //                         color: Colors.grey,
-  //                         fontSize: 12,
-  //                       ),
-  //                     ],
-  //                   ),
-  //                   Column(
-  //                     children: [
-  //                       AppText(
-  //                         'RM1500',
-  //                         fontSize: 18,
-  //                       ),
-  //                       AppText(
-  //                         'Per month',
-  //                         color: Colors.grey,
-  //                       ),
-  //                     ],
-  //                   ),
-  //                 ],
-  //               ),
-  //             ),
-  //           ],
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
 
   Widget _buildAvatar() {
     return Padding(
@@ -207,285 +141,398 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
               ),
-              Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
+              ScaleTransition(
+                alignment: Alignment.center,
+                scale: CurvedAnimation(
+                  parent: animationController,
+                  curve: Curves.fastOutSlowIn,
                 ),
-                child: AppPicture(
-                  width: 56,
-                  height: 56,
-                  isCustomBorderRadius: true,
-                  customeBorderRadius: BorderRadius.all(Radius.circular(60.0)),
-                  image:
-                      'https://www.straitstimes.com/sites/default/files/styles/article_pictrure_780x520_/public/articles/2019/05/31/st_20190531_trend311t5b_4878396.jpg?itok=W3PepKXp&timestamp=1559235671',
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                  ),
+                  child: AppPicture(
+                    width: 56,
+                    height: 56,
+                    isCustomBorderRadius: true,
+                    customeBorderRadius:
+                        BorderRadius.all(Radius.circular(60.0)),
+                    image:
+                        'https://www.straitstimes.com/sites/default/files/styles/article_pictrure_780x520_/public/articles/2019/05/31/st_20190531_trend311t5b_4878396.jpg?itok=W3PepKXp&timestamp=1559235671',
+                  ),
                 ),
               ),
             ],
           ),
-          // AppHeightSizedBox.mediumBox,
-          // Container(
-          //   height: 100,
-          //   width: double.infinity,
-          //   decoration: BoxDecoration(
-          //     borderRadius: AppBorderRadius.normal,
-          //     color: AppColor.white,
-          //     boxShadow: AppBoxShadow.normal,
-          //   ),
-          //   child: Row(
-          //     crossAxisAlignment: CrossAxisAlignment.center,
-          //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //     children: [
-          //       Column(
-          //         mainAxisAlignment: MainAxisAlignment.center,
-          //         children: [
-          //           AppText(
-          //             '10',
-          //             color: AppColor.blue,
-          //             fontSize: 20,
-          //           ),
-          //           AppText(
-          //             'Rented',
-          //             color: AppColor.grey,
-          //             fontSize: 12,
-          //           ),
-          //         ],
-          //       ),
-          //       Container(
-          //         height: 30,
-          //         width: 0.2,
-          //         color: Colors.grey,
-          //       ),
-          //       Column(
-          //         mainAxisAlignment: MainAxisAlignment.center,
-          //         children: [
-          //           AppText(
-          //             '1',
-          //             color: AppColor.blue,
-          //             fontSize: 20,
-          //           ),
-          //           AppText(
-          //             'Renting',
-          //             color: AppColor.grey,
-          //             fontSize: 12,
-          //           ),
-          //         ],
-          //       ),
-          //   ],
-          // ),
         ],
       ),
     );
   }
 
-  Widget _buildSearchBar(BuildContext context) {
-    FocusNode searchFocus;
-    TextEditingController searchController;
-    return Row(
-      children: [
-        Flexible(
-          child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-            decoration: BoxDecoration(
-              boxShadow: AppBoxShadow.normal,
-              color: AppColor.white,
-              borderRadius: AppBorderRadius.normal,
-            ),
-            child: SearchBar(
-              hintText: 'Search your properties...',
-              searchFocus: searchFocus,
-              searchController: searchController,
-              searBarBackgroundColor: AppColor.white,
-              fontColor: AppColor.darkGrey,
-              onChanged: (String str) {},
-            ),
-          ),
-        ),
-        Container(
-          decoration: BoxDecoration(
-            color: AppColor.blue,
-            borderRadius: AppBorderRadius.normal,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Icon(
-              Feather.sliders,
-              color: AppColor.white,
-              size: 20,
-            ),
-          ),
-        ),
-        AppWidthSizedBox.smallBox,
-      ],
-    );
-  }
-
-  Widget _buildTabBar() {
-    return TabBar(
-      unselectedLabelColor: AppColor.blue,
-      labelColor: AppColor.blue,
-      indicatorSize: TabBarIndicatorSize.label,
-      labelStyle: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.bold,
-      ),
-      unselectedLabelStyle: TextStyle(
-        fontSize: 15,
-      ),
-      tabs: <Widget>[
-        _buildTabContainer('Tenant'),
-        _buildTabContainer('Landlord'),
-      ],
-    );
-  }
-
-  Widget _buildTabContainer(String title) {
-    return Tab(
+  Widget _buildPropertyRental(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
       child: Container(
-        child: Align(
-          alignment: Alignment.center,
-          child: Text(title),
+        decoration: BoxDecoration(
+          boxShadow: AppBoxShadow.normal,
+          color: AppColor.white,
+          borderRadius: AppBorderRadius.normal,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  AppText(
+                    'Property Rental',
+                    fontWeight: FontWeight.bold,
+                  ),
+                  Expanded(child: Container()),
+                  Icon(Icons.more_horiz, color: AppColor.grey),
+                  Icon(Icons.search, color: AppColor.grey),
+                ],
+              ),
+              AppHeightSizedBox.smallBox,
+              Row(
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        height: 10,
+                        width: 10,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle, color: AppColor.green),
+                      ),
+                      AppWidthSizedBox.smallBox,
+                      AppText(
+                        'Collection',
+                        color: AppColor.grey,
+                      ),
+                    ],
+                  ),
+                  AppWidthSizedBox.smallBox,
+                  Row(
+                    children: [
+                      Container(
+                        height: 10,
+                        width: 10,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle, color: AppColor.blue),
+                      ),
+                      AppWidthSizedBox.smallBox,
+                      AppText(
+                        'Paid',
+                        color: AppColor.grey,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              AppHeightSizedBox.mediumBox,
+              SizedBox(
+                height: 135,
+                child: ListView.separated(
+                  separatorBuilder: (context, i) => Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 16,
+                    ),
+                  ),
+                  itemCount: 10,
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, i) => Container(
+                    height: 135,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Container(
+                              height: (50 + (i + 25)).toDouble(),
+                              width: 3,
+                              color: AppColor.green,
+                            ),
+                            AppWidthSizedBox.doubleExtraSmallBox,
+                            Container(
+                              height: (120 - (i + 25)).toDouble(),
+                              width: 3,
+                              color: AppColor.blue,
+                            ),
+                          ],
+                        ),
+                        AppHeightSizedBox.doubleExtraSmallBox,
+                        AppText(
+                          (i + 1).toString(),
+                          color: AppColor.grey,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget _buildTenantDetails(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          // Expanded(
-          //   child: MediaQuery.removePadding(
-          //     context: context,
-          //     removeTop: true,
-          //     child: ListView.builder(
-          //         itemCount: 4,
-          //         itemBuilder: (context, i) =>
-          //             _buildPropertyListItem(context, i)),
-          //   ),
-          // ),
-          _buildSearchBar(context),
-          AppHeightSizedBox.smallBox,
-          GridView(
-            padding: const EdgeInsets.only(top: 0, left: 12, right: 12),
-            physics: NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            scrollDirection: Axis.vertical,
-            children: List<Widget>.generate(
-              homeList.length,
-              (int index) {
-                final int count = homeList.length;
-                final Animation<double> animation =
-                    Tween<double>(begin: 0.0, end: 1.0).animate(
-                  CurvedAnimation(
-                    parent: animationController,
-                    curve: Interval((1 / count) * index, 1.0,
-                        curve: Curves.fastOutSlowIn),
+  Widget _buildPropertyGoal(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Container(
+        decoration: BoxDecoration(
+          boxShadow: AppBoxShadow.normal,
+          color: AppColor.white,
+          borderRadius: AppBorderRadius.normal,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  AppText(
+                    'Property Goals',
+                    fontWeight: FontWeight.bold,
                   ),
-                );
-                animationController.forward();
-                return HomeListView(
-                  animation: animation,
-                  animationController: animationController,
-                  listData: homeList[index],
-                  callBack: () {
-                    Navigator.push<dynamic>(
-                      context,
-                      MaterialPageRoute<dynamic>(
-                        builder: (BuildContext context) => PropertyDetail(),
-                      ),
-                    );
-                  },
-                );
-              },
-            ),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 1,
-              mainAxisSpacing: 12.0,
-              crossAxisSpacing: 12.0,
-              childAspectRatio: 3.6,
-            ),
+                  Expanded(child: Container()),
+                  Icon(Icons.more_horiz, color: AppColor.grey),
+                ],
+              ),
+              AppHeightSizedBox.mediumBox,
+              Row(
+                children: [
+                  AppText('Rentend Properties'),
+                  Expanded(
+                    child: Container(),
+                  ),
+                  AppText('1 / 6'),
+                ],
+              ),
+              AppHeightSizedBox.smallBox,
+              Stack(
+                children: [
+                  Container(
+                    height: 6,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: AppColor.lightGrey,
+                      borderRadius: AppBorderRadius.normal,
+                    ),
+                  ),
+                  Container(
+                    height: 6,
+                    width: maxWidth(context) * 0.15,
+                    decoration: BoxDecoration(
+                      color: AppColor.blue,
+                      borderRadius: AppBorderRadius.normal,
+                    ),
+                  ),
+                ],
+              ),
+              AppHeightSizedBox.mediumBox,
+              Row(
+                children: [
+                  AppText('Profile'),
+                  Expanded(
+                    child: Container(),
+                  ),
+                  AppText('-90%'),
+                ],
+              ),
+              AppHeightSizedBox.smallBox,
+              Stack(
+                children: [
+                  Container(
+                    height: 6,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: AppColor.lightGrey,
+                      borderRadius: AppBorderRadius.normal,
+                    ),
+                  ),
+                  Container(
+                    height: 6,
+                    width: maxWidth(context) * 0.03,
+                    decoration: BoxDecoration(
+                      color: AppColor.red,
+                      borderRadius: AppBorderRadius.normal,
+                    ),
+                  ),
+                ],
+              ),
+              AppHeightSizedBox.mediumBox,
+              Row(
+                children: [
+                  AppText('Issues Reported'),
+                  Expanded(
+                    child: Container(),
+                  ),
+                  AppText('85%'),
+                ],
+              ),
+              AppHeightSizedBox.smallBox,
+              Stack(
+                children: [
+                  Container(
+                    height: 6,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: AppColor.lightGrey,
+                      borderRadius: AppBorderRadius.normal,
+                    ),
+                  ),
+                  Container(
+                    height: 6,
+                    width: maxWidth(context) * 0.7,
+                    decoration: BoxDecoration(
+                      color: AppColor.green,
+                      borderRadius: AppBorderRadius.normal,
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
 
-  Widget _buildLandlordDetail(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          _buildSearchBar(context),
-          AppHeightSizedBox.smallBox,
-          GridView(
-            padding: const EdgeInsets.only(top: 0, left: 12, right: 12),
-            physics: NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            scrollDirection: Axis.vertical,
-            children: List<Widget>.generate(
-              homeList.length,
-              (int index) {
-                final int count = homeList.length;
-                final Animation<double> animation =
-                    Tween<double>(begin: 0.0, end: 1.0).animate(
-                  CurvedAnimation(
-                    parent: animationController,
-                    curve: Interval((1 / count) * index, 1.0,
-                        curve: Curves.fastOutSlowIn),
+  Widget _buildNews(BuildContext context) {
+    List<Map<String, dynamic>> news = [
+      {
+        'color': AppColor.green,
+        'icon': Feather.image,
+        'title': 'KLCC has replied to your request',
+        'time': '12 min ago',
+      },
+      {
+        'color': AppColor.blue,
+        'icon': Feather.mail,
+        'title': 'Your message to Roberta was sent',
+        'time': '39 min ago',
+      },
+      {
+        'color': AppColor.orange,
+        'icon': Icons.person,
+        'title': 'You have new friend suggestion',
+        'time': '2 hours ago',
+      },
+    ];
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Container(
+        decoration: BoxDecoration(
+          boxShadow: AppBoxShadow.normal,
+          color: AppColor.white,
+          borderRadius: AppBorderRadius.normal,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  AppText(
+                    'Property News',
+                    fontWeight: FontWeight.bold,
                   ),
-                );
-                animationController.forward();
-                return HomeListView(
-                  animation: animation,
-                  animationController: animationController,
-                  listData: homeList[index],
-                  callBack: () {
-                    Navigator.push<dynamic>(
-                      context,
-                      MaterialPageRoute<dynamic>(
-                        builder: (BuildContext context) => PropertyDetail(),
+                  Expanded(child: Container()),
+                  Icon(Icons.more_horiz, color: AppColor.grey),
+                ],
+              ),
+              AppHeightSizedBox.mediumBox,
+              ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: news.length,
+                itemBuilder: (context, i) => Padding(
+                  padding: const EdgeInsets.only(bottom: 16.0),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 48,
+                        height: 48,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: news[i]['color'].withOpacity(0.2),
+                        ),
+                        child: Center(
+                          child: Icon(
+                            news[i]['icon'],
+                            color: news[i]['color'],
+                          ),
+                        ),
                       ),
-                    );
-                  },
-                );
-              },
-            ),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 1,
-              mainAxisSpacing: 12.0,
-              crossAxisSpacing: 12.0,
-              childAspectRatio: 3.6,
-            ),
+                      AppWidthSizedBox.smallBox,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          AppText(news[i]['title']),
+                          AppHeightSizedBox.extraSmallBox,
+                          AppText(
+                            news[i]['time'],
+                            color: AppColor.grey,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
 
   Widget _buildMainContainer(BuildContext context) {
-    return TabBarView(
-      children: [
-        _buildTenantDetails(context),
-        _buildLandlordDetail(context),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Container(
+            height: 16,
+            width: double.infinity,
+            color: AppColor.white,
+          ),
+          AppHeightSizedBox.smallBox,
+          AnimatedOpacity(
+            duration: const Duration(milliseconds: 1000),
+            opacity: opacity1,
+            child: _buildPropertyRental(context),
+          ),
+          AppHeightSizedBox.smallBox,
+          AnimatedOpacity(
+            duration: const Duration(milliseconds: 1000),
+            opacity: opacity2,
+            child: _buildPropertyGoal(context),
+          ),
+          AppHeightSizedBox.smallBox,
+          AnimatedOpacity(
+            duration: const Duration(milliseconds: 1000),
+            opacity: opacity3,
+            child: _buildNews(context),
+          ),
+        ],
+      ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Padding(
-        padding: const EdgeInsets.only(top: 16.0),
-        child: AppScaffold(
-            appBar: true,
-            titleChild: SafeArea(child: _buildAvatar()),
-            tabBar: _buildTabBar(),
-            backgroundColor: Colors.white,
-            child: _buildMainContainer(context)),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      child: AppScaffold(
+        appBar: true,
+        titleChild: SafeArea(child: _buildAvatar()),
+        backgroundColor: AppColor.veryLightGrey,
+        child: _buildMainContainer(context),
       ),
     );
   }
