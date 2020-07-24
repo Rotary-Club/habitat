@@ -39,7 +39,7 @@ class AppAvatarContainer extends StatelessWidget {
               color: AppColor.green,
             ),
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(3.0),
               child: Container(
                 child: AppPicture(
                   image: image,

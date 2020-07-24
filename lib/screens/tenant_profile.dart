@@ -16,9 +16,12 @@ class TenantProfilePage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AppText(
-            'Tenant Details',
-            fontWeight: FontWeight.bold,
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: AppText(
+              'Tenant Details',
+              fontWeight: FontWeight.bold,
+            ),
           ),
           AppTextFormField(
             'Full Name',
@@ -39,31 +42,29 @@ class TenantProfilePage extends StatelessWidget {
           AppTextFormField(
             'Company (Optional)',
             initialValue: 'Prince Court Hospital',
-            isDropDown: true,
           ),
           AppTextFormField(
             'Job (Optional)',
             initialValue: 'Gum Speciallist',
-            isDropDown: true,
           ),
           AppTextFormField(
             'Rental Payment',
             initialValue: 'Monthly',
-            isDropDown: true,
           ),
           AppTextFormField(
             'Bank Name',
             initialValue: 'Maybank',
-            isDropDown: true,
           ),
           AppTextFormField(
             'Bank Account',
             initialValue: '1560 1100 8888',
-            isDropDown: true,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: AppText('Emergency Contact'),
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: AppText(
+              'Emergency Contact',
+              fontWeight: FontWeight.bold,
+            ),
           ),
           AppTextFormField(
             'Full name',

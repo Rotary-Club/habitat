@@ -27,9 +27,10 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                 children: <Widget>[
                   Container(
                     padding: EdgeInsets.only(
-                        top: MediaQuery.of(context).padding.top,
-                        left: 16,
-                        right: 16),
+                      top: MediaQuery.of(context).padding.top,
+                      left: 16,
+                      right: 16,
+                    ),
                     child: Image.asset('assets/images/feedbackImage.png'),
                   ),
                   Container(
@@ -135,8 +136,9 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                 ),
                 cursorColor: Colors.blue,
                 decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'Enter your feedback...'),
+                  border: InputBorder.none,
+                  hintText: 'Enter your feedback...',
+                ),
               ),
             ),
           ),

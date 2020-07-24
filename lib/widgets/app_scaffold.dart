@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:habitat/themes/app_theme.dart';
 
 class AppScaffold extends StatelessWidget {
   final bool appBar;
@@ -67,24 +68,20 @@ class AppScaffold extends StatelessWidget {
                   child: titleChild,
                 ),
                 iconTheme: IconThemeData(color: backButtonColor),
-                actions: <Widget>[
-                  actionBar == null
-                      ? Container(
-                          margin: EdgeInsets.only(right: 8),
-                          child: Icon(
-                            // For android app bar alignment purpose
-                            Icons.ac_unit,
-                            color: Colors.transparent,
-                          ),
-                        )
-                      : actionBar,
-                  ...(actions != null ? actions : [])
-                ],
+                actions: actions,
                 bottom: tabBar,
               )
             : null,
         floatingActionButton: floatingActionButton,
-        body: child,
+        body: AnnotatedRegion<SystemUiOverlayStyle>(
+          value: SystemUiOverlayStyle(
+            statusBarColor: Colors.transparent,
+            systemNavigationBarColor: AppColor.black,
+            statusBarIconBrightness: Brightness.dark,
+            systemNavigationBarIconBrightness: Brightness.dark,
+          ),
+          child: child,
+        ),
       ),
     );
   }

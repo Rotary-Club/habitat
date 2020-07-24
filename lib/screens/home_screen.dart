@@ -51,72 +51,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     });
   }
 
-  List<Map<String, dynamic>> homeList = [
-    {
-      'id': 1,
-      'image':
-          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
-      'title': 'Seri Mutiara Apartment',
-      'description': 'Shah Alam Selangor',
-      'price': '1500',
-      'type': 'For Rent',
-    },
-    {
-      'id': 2,
-      'image':
-          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
-      'title': 'Seri Mutiara Apartment',
-      'description': 'Shah Alam Selangor',
-      'price': '1500',
-      'type': 'For Rent',
-    },
-    {
-      'id': 3,
-      'image':
-          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
-      'title': 'Seri Mutiara Apartment',
-      'description': 'Shah Alam Selangor',
-      'price': '1500',
-      'type': 'For Rent',
-    },
-    {
-      'id': 4,
-      'image':
-          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
-      'title': 'Seri Mutiara Apartment',
-      'description': 'Shah Alam Selangor',
-      'price': '1500',
-      'type': 'For Rent',
-    },
-    {
-      'id': 5,
-      'image':
-          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
-      'title': 'Seri Mutiara Apartment',
-      'description': 'Shah Alam Selangor',
-      'price': '1500',
-      'type': 'For Rent',
-    },
-    {
-      'id': 6,
-      'image':
-          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
-      'title': 'Seri Mutiara Apartment',
-      'description': 'Shah Alam Selangor',
-      'price': '1500',
-      'type': 'For Rent',
-    },
-    {
-      'id': 7,
-      'image':
-          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
-      'title': 'Seri Mutiara Apartment',
-      'description': 'Shah Alam Selangor',
-      'price': '1500',
-      'type': 'For Rent',
-    },
-  ];
-
   Future<bool> getData() async {
     await Future<dynamic>.delayed(const Duration(milliseconds: 0));
     return true;
@@ -196,6 +130,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   ),
                   Expanded(child: Container()),
                   Icon(Icons.more_horiz, color: AppColor.grey),
+                  SizedBox(
+                    width: 10,
+                  ),
                   Icon(Icons.search, color: AppColor.grey),
                 ],
               ),
