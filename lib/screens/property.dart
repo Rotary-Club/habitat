@@ -41,7 +41,7 @@ class _PropertyPageState extends State<PropertyPage>
     {
       'id': 3,
       'image':
-          'https://amazempireproperty.com/wp-content/uploads/2019/06/1.png',
+          'https://www.avidestates.my/wp-content/uploads/WPL/633/thimg_2014-04-11_16.53.10_view_1380x920.jpg',
       'title': 'Seri Begonia Apartment',
       'description': 'Puchong Selangor',
       'price': '1050',
@@ -60,7 +60,7 @@ class _PropertyPageState extends State<PropertyPage>
       'id': 5,
       'image':
           'https://www.estate123.com/residence/ImageView/11092016123025AM438167379@636091506330587500.jpg',
-      'title': 'Sri Ampang Condominium',
+      'title': 'Ampang Condominium',
       'description': 'Shah Alam Selangor',
       'price': '1750',
       'type': 'Renting',
@@ -77,7 +77,7 @@ class _PropertyPageState extends State<PropertyPage>
     {
       'id': 7,
       'image':
-          'https://www.avidestates.my/wp-content/uploads/WPL/633/thimg_2014-04-11_16.53.10_view_1380x920.jpg',
+          'https://amazempireproperty.com/wp-content/uploads/2019/06/1.png',
       'title': 'Dedaun Residence',
       'description': 'Ampang Selangor',
       'price': '3200',
