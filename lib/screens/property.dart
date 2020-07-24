@@ -19,7 +19,7 @@ class _PropertyPageState extends State<PropertyPage>
     with TickerProviderStateMixin {
   AnimationController animationController;
   bool multiple = true;
-  List<Map<String, dynamic>> rentingList = [
+  List<Map<String, dynamic>> ownPropertyList = [
     {
       'id': 1,
       'image':
@@ -84,7 +84,8 @@ class _PropertyPageState extends State<PropertyPage>
       'type': 'Renting',
     },
   ];
-  List<Map<String, dynamic>> ownPropertyList = [
+
+  List<Map<String, dynamic>> rentingList = [
     {
       'id': 1,
       'image':
