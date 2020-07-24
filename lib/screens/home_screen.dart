@@ -129,42 +129,48 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   }
 
   Widget _buildAvatar() {
-    return Padding(
-      padding: const EdgeInsets.all(28.0),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              AppText(
-                'Hello, Gary!',
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-              ),
-              ScaleTransition(
-                alignment: Alignment.center,
-                scale: CurvedAnimation(
-                  parent: animationController,
-                  curve: Curves.fastOutSlowIn,
+    return Container(
+      color: AppColor.white,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 28.0,
+          vertical: 36,
+        ),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                AppText(
+                  'Hello, Gary!',
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
                 ),
-                child: Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
+                ScaleTransition(
+                  alignment: Alignment.center,
+                  scale: CurvedAnimation(
+                    parent: animationController,
+                    curve: Curves.fastOutSlowIn,
                   ),
-                  child: AppPicture(
-                    width: 56,
-                    height: 56,
-                    isCustomBorderRadius: true,
-                    customeBorderRadius:
-                        BorderRadius.all(Radius.circular(60.0)),
-                    image:
-                        'https://www.straitstimes.com/sites/default/files/styles/article_pictrure_780x520_/public/articles/2019/05/31/st_20190531_trend311t5b_4878396.jpg?itok=W3PepKXp&timestamp=1559235671',
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: AppPicture(
+                      width: 56,
+                      height: 56,
+                      isCustomBorderRadius: true,
+                      customeBorderRadius:
+                          BorderRadius.all(Radius.circular(60.0)),
+                      image:
+                          'https://www.straitstimes.com/sites/default/files/styles/article_pictrure_780x520_/public/articles/2019/05/31/st_20190531_trend311t5b_4878396.jpg?itok=W3PepKXp&timestamp=1559235671',
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -496,11 +502,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Container(
-            height: 16,
-            width: double.infinity,
-            color: AppColor.white,
-          ),
+          _buildAvatar(),
           AppHeightSizedBox.smallBox,
           AnimatedOpacity(
             duration: const Duration(milliseconds: 1000),
@@ -529,8 +531,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: AppScaffold(
-        appBar: true,
-        titleChild: SafeArea(child: _buildAvatar()),
+        appBar: false,
         backgroundColor: AppColor.veryLightGrey,
         child: _buildMainContainer(context),
       ),
