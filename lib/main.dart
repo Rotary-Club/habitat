@@ -30,10 +30,7 @@ class HabitatApp extends StatelessWidget {
           systemNavigationBarIconBrightness: Brightness.dark,
         ),
         child: Scaffold(
-          body: SafeArea(
-            top: false,
-            child: HomeBottomNavigation(),
-          ),
+          body: HomeBottomNavigation(),
         ),
       ),
     );

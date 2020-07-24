@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:habitat/screens/property_detail.dart';
+import 'package:habitat/screens/update_own_property_detail.dart';
 import 'package:habitat/themes/app_theme.dart';
 import 'package:habitat/widgets/app_picture.dart';
 import 'package:habitat/widgets/app_scaffold.dart';
@@ -18,7 +19,7 @@ class _PropertyPageState extends State<PropertyPage>
     with TickerProviderStateMixin {
   AnimationController animationController;
   bool multiple = true;
-  List<Map<String, dynamic>> homeList = [
+  List<Map<String, dynamic>> rentingList = [
     {
       'id': 1,
       'image':
@@ -26,7 +27,7 @@ class _PropertyPageState extends State<PropertyPage>
       'title': 'Seri Mutiara Apartment',
       'description': 'Shah Alam Selangor',
       'price': '1500',
-      'type': 'For Rent',
+      'type': 'Renting',
     },
     {
       'id': 2,
@@ -35,7 +36,7 @@ class _PropertyPageState extends State<PropertyPage>
       'title': 'Seri Mutiara Apartment',
       'description': 'Shah Alam Selangor',
       'price': '1500',
-      'type': 'For Rent',
+      'type': 'Renting',
     },
     {
       'id': 3,
@@ -44,7 +45,7 @@ class _PropertyPageState extends State<PropertyPage>
       'title': 'Seri Mutiara Apartment',
       'description': 'Shah Alam Selangor',
       'price': '1500',
-      'type': 'For Rent',
+      'type': 'Renting',
     },
     {
       'id': 4,
@@ -53,7 +54,72 @@ class _PropertyPageState extends State<PropertyPage>
       'title': 'Seri Mutiara Apartment',
       'description': 'Shah Alam Selangor',
       'price': '1500',
-      'type': 'For Rent',
+      'type': 'Renting',
+    },
+    {
+      'id': 5,
+      'image':
+          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
+      'title': 'Seri Mutiara Apartment',
+      'description': 'Shah Alam Selangor',
+      'price': '1500',
+      'type': 'Renting',
+    },
+    {
+      'id': 6,
+      'image':
+          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
+      'title': 'Seri Mutiara Apartment',
+      'description': 'Shah Alam Selangor',
+      'price': '1500',
+      'type': 'Renting',
+    },
+    {
+      'id': 7,
+      'image':
+          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
+      'title': 'Seri Mutiara Apartment',
+      'description': 'Shah Alam Selangor',
+      'price': '1500',
+      'type': 'Renting',
+    },
+  ];
+  List<Map<String, dynamic>> ownPropertyList = [
+    {
+      'id': 1,
+      'image':
+          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
+      'title': 'Seri Mutiara Apartment',
+      'description': 'Shah Alam Selangor',
+      'price': '1500',
+      'type': 'Rented',
+    },
+    {
+      'id': 2,
+      'image':
+          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
+      'title': 'Seri Mutiara Apartment',
+      'description': 'Shah Alam Selangor',
+      'price': '1500',
+      'type': 'Rented',
+    },
+    {
+      'id': 3,
+      'image':
+          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
+      'title': 'Seri Mutiara Apartment',
+      'description': 'Shah Alam Selangor',
+      'price': '1500',
+      'type': 'Rented',
+    },
+    {
+      'id': 4,
+      'image':
+          'https://my2-cdn.pgimgs.com/listing/29895667/UPHO.136616517.V800/Sky-Condominium-Bandar-Puchong-Jaya-Puchong-Malaysia.jpg',
+      'title': 'Seri Mutiara Apartment',
+      'description': 'Shah Alam Selangor',
+      'price': '1500',
+      'type': 'Rented',
     },
     {
       'id': 5,
@@ -155,8 +221,8 @@ class _PropertyPageState extends State<PropertyPage>
         fontSize: 15,
       ),
       tabs: <Widget>[
-        _buildTabContainer('Tenant'),
-        _buildTabContainer('Landlord'),
+        _buildTabContainer('Own Property'),
+        _buildTabContainer('Renting'),
       ],
     );
   }
@@ -172,22 +238,12 @@ class _PropertyPageState extends State<PropertyPage>
     );
   }
 
-  Widget _buildTenantDetails(BuildContext context) {
+  Widget _buildOwnPropertyList(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          // Expanded(
-          //   child: MediaQuery.removePadding(
-          //     context: context,
-          //     removeTop: true,
-          //     child: ListView.builder(
-          //         itemCount: 4,
-          //         itemBuilder: (context, i) =>
-          //             _buildPropertyListItem(context, i)),
-          //   ),
-          // ),
           _buildSearchBar(context),
           AppHeightSizedBox.smallBox,
           GridView(
@@ -196,9 +252,9 @@ class _PropertyPageState extends State<PropertyPage>
             shrinkWrap: true,
             scrollDirection: Axis.vertical,
             children: List<Widget>.generate(
-              homeList.length,
+              ownPropertyList.length,
               (int index) {
-                final int count = homeList.length;
+                final int count = ownPropertyList.length;
                 final Animation<double> animation =
                     Tween<double>(begin: 0.0, end: 1.0).animate(
                   CurvedAnimation(
@@ -211,12 +267,13 @@ class _PropertyPageState extends State<PropertyPage>
                 return HomeListView(
                   animation: animation,
                   animationController: animationController,
-                  listData: homeList[index],
+                  listData: ownPropertyList[index],
                   callBack: () {
                     Navigator.push<dynamic>(
                       context,
                       MaterialPageRoute<dynamic>(
-                        builder: (BuildContext context) => PropertyDetail(),
+                        builder: (BuildContext context) =>
+                            UpdateOwnPropertyDetailsPage(),
                       ),
                     );
                   },
@@ -235,7 +292,7 @@ class _PropertyPageState extends State<PropertyPage>
     );
   }
 
-  Widget _buildLandlordDetail(BuildContext context) {
+  Widget _buildRentingList(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -249,9 +306,9 @@ class _PropertyPageState extends State<PropertyPage>
             shrinkWrap: true,
             scrollDirection: Axis.vertical,
             children: List<Widget>.generate(
-              homeList.length,
+              rentingList.length,
               (int index) {
-                final int count = homeList.length;
+                final int count = rentingList.length;
                 final Animation<double> animation =
                     Tween<double>(begin: 0.0, end: 1.0).animate(
                   CurvedAnimation(
@@ -264,7 +321,7 @@ class _PropertyPageState extends State<PropertyPage>
                 return HomeListView(
                   animation: animation,
                   animationController: animationController,
-                  listData: homeList[index],
+                  listData: rentingList[index],
                   callBack: () {
                     Navigator.push<dynamic>(
                       context,
@@ -291,8 +348,8 @@ class _PropertyPageState extends State<PropertyPage>
   Widget _buildMainContainer(BuildContext context) {
     return TabBarView(
       children: [
-        _buildTenantDetails(context),
-        _buildLandlordDetail(context),
+        _buildOwnPropertyList(context),
+        _buildRentingList(context),
       ],
     );
   }

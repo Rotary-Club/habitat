@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:habitat/screens/issues.dart';
 import 'package:habitat/themes/app_theme.dart';
 import 'package:habitat/utils/utils.dart';
 import 'package:habitat/widgets/app_picture.dart';
@@ -226,120 +227,124 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   Widget _buildPropertyGoal(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Container(
-        decoration: BoxDecoration(
-          boxShadow: AppBoxShadow.normal,
-          color: AppColor.white,
-          borderRadius: AppBorderRadius.normal,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  AppText(
-                    'Property Goals',
-                    fontWeight: FontWeight.bold,
-                  ),
-                  Expanded(child: Container()),
-                  Icon(Icons.more_horiz, color: AppColor.grey),
-                ],
-              ),
-              AppHeightSizedBox.mediumBox,
-              Row(
-                children: [
-                  AppText('Rentend Properties'),
-                  Expanded(
-                    child: Container(),
-                  ),
-                  AppText('1 / 6'),
-                ],
-              ),
-              AppHeightSizedBox.smallBox,
-              Stack(
-                children: [
-                  Container(
-                    height: 6,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: AppColor.lightGrey,
-                      borderRadius: AppBorderRadius.normal,
+      child: InkWell(
+        onTap: () => Navigator.push(
+            context, MaterialPageRoute(builder: (context) => IssuesPage())),
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: AppBoxShadow.normal,
+            color: AppColor.white,
+            borderRadius: AppBorderRadius.normal,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    AppText(
+                      'Property Goals',
+                      fontWeight: FontWeight.bold,
                     ),
-                  ),
-                  Container(
-                    height: 6,
-                    width: maxWidth(context) * 0.15,
-                    decoration: BoxDecoration(
-                      color: AppColor.blue,
-                      borderRadius: AppBorderRadius.normal,
+                    Expanded(child: Container()),
+                    Icon(Icons.more_horiz, color: AppColor.grey),
+                  ],
+                ),
+                AppHeightSizedBox.mediumBox,
+                Row(
+                  children: [
+                    AppText('Rentend Properties'),
+                    Expanded(
+                      child: Container(),
                     ),
-                  ),
-                ],
-              ),
-              AppHeightSizedBox.mediumBox,
-              Row(
-                children: [
-                  AppText('Profile'),
-                  Expanded(
-                    child: Container(),
-                  ),
-                  AppText('-90%'),
-                ],
-              ),
-              AppHeightSizedBox.smallBox,
-              Stack(
-                children: [
-                  Container(
-                    height: 6,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: AppColor.lightGrey,
-                      borderRadius: AppBorderRadius.normal,
+                    AppText('1 / 6'),
+                  ],
+                ),
+                AppHeightSizedBox.smallBox,
+                Stack(
+                  children: [
+                    Container(
+                      height: 6,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: AppColor.lightGrey,
+                        borderRadius: AppBorderRadius.normal,
+                      ),
                     ),
-                  ),
-                  Container(
-                    height: 6,
-                    width: maxWidth(context) * 0.03,
-                    decoration: BoxDecoration(
-                      color: AppColor.red,
-                      borderRadius: AppBorderRadius.normal,
+                    Container(
+                      height: 6,
+                      width: maxWidth(context) * 0.15,
+                      decoration: BoxDecoration(
+                        color: AppColor.blue,
+                        borderRadius: AppBorderRadius.normal,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              AppHeightSizedBox.mediumBox,
-              Row(
-                children: [
-                  AppText('Issues Reported'),
-                  Expanded(
-                    child: Container(),
-                  ),
-                  AppText('85%'),
-                ],
-              ),
-              AppHeightSizedBox.smallBox,
-              Stack(
-                children: [
-                  Container(
-                    height: 6,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: AppColor.lightGrey,
-                      borderRadius: AppBorderRadius.normal,
+                  ],
+                ),
+                AppHeightSizedBox.mediumBox,
+                Row(
+                  children: [
+                    AppText('Profile'),
+                    Expanded(
+                      child: Container(),
                     ),
-                  ),
-                  Container(
-                    height: 6,
-                    width: maxWidth(context) * 0.7,
-                    decoration: BoxDecoration(
-                      color: AppColor.green,
-                      borderRadius: AppBorderRadius.normal,
+                    AppText('-90%'),
+                  ],
+                ),
+                AppHeightSizedBox.smallBox,
+                Stack(
+                  children: [
+                    Container(
+                      height: 6,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: AppColor.lightGrey,
+                        borderRadius: AppBorderRadius.normal,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                    Container(
+                      height: 6,
+                      width: maxWidth(context) * 0.03,
+                      decoration: BoxDecoration(
+                        color: AppColor.red,
+                        borderRadius: AppBorderRadius.normal,
+                      ),
+                    ),
+                  ],
+                ),
+                AppHeightSizedBox.mediumBox,
+                Row(
+                  children: [
+                    AppText('Issues Reported'),
+                    Expanded(
+                      child: Container(),
+                    ),
+                    AppText('85%'),
+                  ],
+                ),
+                AppHeightSizedBox.smallBox,
+                Stack(
+                  children: [
+                    Container(
+                      height: 6,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: AppColor.lightGrey,
+                        borderRadius: AppBorderRadius.normal,
+                      ),
+                    ),
+                    Container(
+                      height: 6,
+                      width: maxWidth(context) * 0.7,
+                      decoration: BoxDecoration(
+                        color: AppColor.green,
+                        borderRadius: AppBorderRadius.normal,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
