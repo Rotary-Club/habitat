@@ -63,7 +63,7 @@ class _HomeSetUpState extends State<HomeBottomNavigation> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Feather.book),
-            title: AppText('Issues', fontSize: 13),
+            title: AppText('Property', fontSize: 13),
           ),
           BottomNavigationBarItem(
             icon: Icon(Feather.heart),

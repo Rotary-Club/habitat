@@ -453,41 +453,45 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 ],
               ),
               AppHeightSizedBox.mediumBox,
-              ListView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: news.length,
-                itemBuilder: (context, i) => Padding(
-                  padding: const EdgeInsets.only(bottom: 16.0),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 48,
-                        height: 48,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: news[i]['color'].withOpacity(0.2),
-                        ),
-                        child: Center(
-                          child: Icon(
-                            news[i]['icon'],
-                            color: news[i]['color'],
+              MediaQuery.removePadding(
+                context: context,
+                removeTop: true,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: news.length,
+                  itemBuilder: (context, i) => Padding(
+                    padding: const EdgeInsets.only(bottom: 16.0),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 48,
+                          height: 48,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: news[i]['color'].withOpacity(0.2),
+                          ),
+                          child: Center(
+                            child: Icon(
+                              news[i]['icon'],
+                              color: news[i]['color'],
+                            ),
                           ),
                         ),
-                      ),
-                      AppWidthSizedBox.smallBox,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          AppText(news[i]['title']),
-                          AppHeightSizedBox.extraSmallBox,
-                          AppText(
-                            news[i]['time'],
-                            color: AppColor.grey,
-                          ),
-                        ],
-                      ),
-                    ],
+                        AppWidthSizedBox.smallBox,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            AppText(news[i]['title']),
+                            AppHeightSizedBox.extraSmallBox,
+                            AppText(
+                              news[i]['time'],
+                              color: AppColor.grey,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
