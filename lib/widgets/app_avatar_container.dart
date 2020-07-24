@@ -50,11 +50,6 @@ class AppAvatarContainer extends StatelessWidget {
             ),
           ),
           AppHeightSizedBox.smallBox,
-          AppText(
-            AutofillHints.creditCardFamilyName,
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-          ),
           AppText(email),
           AppText(phoneNo),
         ],
