@@ -92,8 +92,6 @@ Future<File> generateContractFile(ContractModel contract) async {
             alignment: WrapAlignment.start,
             runAlignment: WrapAlignment.center,
             crossAxisAlignment: WrapCrossAlignment.center,
-            spacing: 10,
-            runSpacing: 10,
             children: <Widget>[
               Center(
                 child: Padding(

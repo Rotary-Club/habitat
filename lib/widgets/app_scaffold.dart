@@ -15,6 +15,7 @@ class AppScaffold extends StatelessWidget {
   final bool isBackButton;
   final Widget floatingActionButton;
   final Widget actionBar;
+  final List<Widget> actions;
   final Widget bottomNavigatorBar;
   final Widget leadingIcon;
 
@@ -32,6 +33,7 @@ class AppScaffold extends StatelessWidget {
     this.tabBar,
     this.floatingActionButton,
     this.actionBar,
+    this.actions,
     this.bottomNavigatorBar,
     this.leadingIcon,
     Key key,
@@ -76,6 +78,7 @@ class AppScaffold extends StatelessWidget {
                           ),
                         )
                       : actionBar,
+                  ...(actions != null ? actions : [])
                 ],
                 bottom: tabBar,
               )
