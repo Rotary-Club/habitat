@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:habitat/themes/app_theme.dart';
 import 'package:native_pdf_view/native_pdf_view.dart';
 
+import 'app_scaffold.dart';
+import 'app_text.dart';
+
 class AppPdfViewer extends StatefulWidget {
   const AppPdfViewer(
     this.file, {
@@ -35,54 +38,49 @@ class _AppPdfViewerState extends State<AppPdfViewer> {
   }
 
   @override
-  Widget build(BuildContext context) => MaterialApp(
-        theme: ThemeData(primaryColor: AppColor.accent),
-        home: Scaffold(
-          appBar: AppBar(
-            title: Text('PdfView example'),
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(Icons.navigate_before),
-                onPressed: () {
-                  _pdfController.previousPage(
-                    curve: Curves.ease,
-                    duration: Duration(milliseconds: 100),
-                  );
-                },
-              ),
-              Container(
-                alignment: Alignment.center,
-                child: Text(
-                  '$_actualPageNumber/$_allPagesCount',
-                  style: TextStyle(fontSize: 22),
-                ),
-              ),
-              IconButton(
-                icon: Icon(Icons.navigate_next),
-                onPressed: () {
-                  _pdfController.nextPage(
-                    curve: Curves.ease,
-                    duration: Duration(milliseconds: 100),
-                  );
-                },
-              ),
-            ],
-          ),
-          body: PdfView(
-            documentLoader: Center(child: CircularProgressIndicator()),
-            pageLoader: Center(child: CircularProgressIndicator()),
-            controller: _pdfController,
-            onDocumentLoaded: (document) {
-              setState(() {
-                _allPagesCount = document.pagesCount;
-              });
-            },
-            onPageChanged: (page) {
-              setState(() {
-                _actualPageNumber = page;
-              });
+  Widget build(BuildContext context) => AppScaffold(
+        titleChild: AppText('Tenancy Contract'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.navigate_before),
+            onPressed: () {
+              _pdfController.previousPage(
+                curve: Curves.ease,
+                duration: Duration(milliseconds: 100),
+              );
             },
           ),
+          Container(
+            alignment: Alignment.center,
+            child: Text(
+              '$_actualPageNumber/$_allPagesCount',
+              style: TextStyle(fontSize: 16, color: AppColor.black),
+            ),
+          ),
+          IconButton(
+            icon: Icon(Icons.navigate_next),
+            onPressed: () {
+              _pdfController.nextPage(
+                curve: Curves.ease,
+                duration: Duration(milliseconds: 100),
+              );
+            },
+          ),
+        ],
+        child: PdfView(
+          documentLoader: Center(child: CircularProgressIndicator()),
+          pageLoader: Center(child: CircularProgressIndicator()),
+          controller: _pdfController,
+          onDocumentLoaded: (document) {
+            setState(() {
+              _allPagesCount = document.pagesCount;
+            });
+          },
+          onPageChanged: (page) {
+            setState(() {
+              _actualPageNumber = page;
+            });
+          },
         ),
       );
 }

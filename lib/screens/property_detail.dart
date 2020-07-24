@@ -141,14 +141,15 @@ class _PropertyDetailState extends State<PropertyDetail>
                           margin: EdgeInsets.only(top: 16),
                           decoration: BoxDecoration(
                             color: AppColor.green,
-                            borderRadius: AppBorderRadius.small,
+                            borderRadius: AppBorderRadius.normal,
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(6.0),
                             child: AppText(
-                              'view Profile',
+                              'View Profile',
                               color: AppColor.white,
                               fontSize: 11,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
@@ -158,11 +159,12 @@ class _PropertyDetailState extends State<PropertyDetail>
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          AppText('Rented'),
-                          Icon(
-                            Icons.notification_important,
-                            color: AppColor.red,
-                          )
+                          AppText(
+                            'Rented',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 10,
+                            color: AppColor.green,
+                          ),
                         ],
                       ),
                     ),
@@ -289,8 +291,10 @@ class _PropertyDetailState extends State<PropertyDetail>
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: AppText(
-                                  'RM1500 /M',
+                                  'RM1,500/m',
                                   color: AppColor.white,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),

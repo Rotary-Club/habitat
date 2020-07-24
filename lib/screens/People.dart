@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:habitat/screens/landlord_profile.dart';
 import 'package:habitat/screens/tenant_profile.dart';
 import 'package:habitat/themes/app_theme.dart';
@@ -69,7 +70,7 @@ class TenantsPage extends StatelessWidget {
                               margin: EdgeInsets.only(top: 16),
                               decoration: BoxDecoration(
                                 color: AppColor.green,
-                                borderRadius: AppBorderRadius.small,
+                                borderRadius: AppBorderRadius.normal,
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(6.0),
@@ -86,10 +87,17 @@ class TenantsPage extends StatelessWidget {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  AppText('Rented'),
+                                  AppText(
+                                    'Rented',
+                                    fontSize: 10,
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
                                   Icon(
-                                    Icons.notification_important,
+                                    MaterialIcons.notifications_active,
                                     color: AppColor.red,
+                                    size: 15,
                                   )
                                 ],
                               ),
@@ -230,10 +238,10 @@ class TenantsPage extends StatelessWidget {
       length: 2,
       child: AppScaffold(
         appBar: true,
-        isBackButton: false,
         backgroundColor: AppColor.veryLightGrey,
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
+          backgroundColor: AppColor.blue,
           child: Icon(Icons.add),
         ),
         titleChild: AppText('People'),

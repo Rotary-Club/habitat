@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:habitat/themes/app_theme.dart';
 import 'package:habitat/widgets/app_picture.dart';
 import 'package:habitat/widgets/app_text.dart';
@@ -46,31 +47,45 @@ class AppTenantDetailContainer extends StatelessWidget {
                   ),
                   AppHeightSizedBox.mediumBox,
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
                         margin: EdgeInsets.only(top: 16),
                         decoration: BoxDecoration(
                           color: AppColor.green,
-                          borderRadius: AppBorderRadius.small,
+                          borderRadius: AppBorderRadius.normal,
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(6.0),
                           child: AppText(
-                            'RM1500 / M',
+                            'RM1,500/m',
                             color: AppColor.white,
-                            fontSize: 11,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
+                      AppWidthSizedBox.doubleLargeBox,
                       Padding(
-                        padding: const EdgeInsets.all(6.0),
-                        child: AppText('Rented'),
+                        padding: const EdgeInsets.only(top: 16.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            AppText(
+                              'Rented',
+                              fontSize: 10,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Icon(
+                              MaterialIcons.notifications_active,
+                              color: AppColor.red,
+                              size: 15,
+                            )
+                          ],
+                        ),
                       ),
-                      Icon(
-                        Icons.notification_important,
-                        color: AppColor.red,
-                      )
                     ],
                   ),
                 ],
