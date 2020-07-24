@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:habitat/models/contract.dart';
-import 'package:habitat/utils/utils.dart';
+import 'package:habitat/utils/pdf.dart';
 import 'package:habitat/widgets/app_pdf_view.dart';
 
 import 'package:habitat/themes/app_theme.dart';

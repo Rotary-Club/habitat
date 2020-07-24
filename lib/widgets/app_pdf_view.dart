@@ -39,7 +39,7 @@ class _AppPdfViewerState extends State<AppPdfViewer> {
         theme: ThemeData(primaryColor: AppColor.accent),
         home: Scaffold(
           appBar: AppBar(
-            title: Text('PdfView example'),
+            title: Text('Tenancy Contract'),
             actions: <Widget>[
               IconButton(
                 icon: Icon(Icons.navigate_before),

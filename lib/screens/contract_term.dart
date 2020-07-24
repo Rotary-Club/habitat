@@ -50,7 +50,7 @@ class _ContractTermPageState extends State<ContractTermPage> {
         'nric': 'D09X0112H',
         'mobile': '(+49) 4321 4321',
         'email': 'martha@gahoo.com',
-        'relationship': 'Friend',
+        'relationship': 'FRIEND',
       },
     },
     'extension': 1,
