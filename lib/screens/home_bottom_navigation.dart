@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:habitat/screens/home_screen.dart';
 import 'package:habitat/screens/People.dart';
-import 'package:habitat/screens/issues.dart';
+import 'package:habitat/screens/property.dart';
 import 'package:habitat/screens/profile.dart';
 import 'package:habitat/themes/app_theme.dart';
 import 'package:habitat/widgets/app_text.dart';
@@ -23,7 +23,7 @@ class _HomeSetUpState extends State<HomeBottomNavigation> {
 
   List<Widget> widgetList = [
     MyHomePage(),
-    IssuePage(),
+    PropertyPage(),
     TenantsPage(),
     ProfilePage(),
   ];
