@@ -150,6 +150,10 @@ class _PropertyPageState extends State<PropertyPage>
       'type': 'For Rent',
     },
   ];
+  bool isFilteringOwnProperties = false;
+  List<Map<String, dynamic>> filteredOwnProperties = [];
+  bool isFilteringRentingProperties = false;
+  List<Map<String, dynamic>> filteredRentingProperties = [];
   @override
   void initState() {
     animationController = AnimationController(
@@ -166,6 +170,53 @@ class _PropertyPageState extends State<PropertyPage>
   void dispose() {
     animationController.dispose();
     super.dispose();
+  }
+
+  filterProperties(String str, BuildContext context) {
+    final currentIndex = DefaultTabController.of(context).index;
+    print({str, currentIndex});
+    if (str.isEmpty) {
+      if (currentIndex == 0) {
+        setState(() {
+          isFilteringOwnProperties = false;
+          filteredOwnProperties = ownPropertyList;
+        });
+      }
+      if (currentIndex == 1) {
+        setState(() {
+          isFilteringRentingProperties = false;
+          filteredRentingProperties = rentingList;
+        });
+      }
+    } else {
+      RegExp regex = RegExp(str, caseSensitive: false);
+      if (currentIndex == 0) {
+        setState(() {
+          isFilteringOwnProperties = true;
+          filteredOwnProperties = ownPropertyList
+              .where((f) =>
+                  regex.hasMatch(f['title']) ||
+                  regex.hasMatch(f['description']) ||
+                  regex.hasMatch(f['type']) ||
+                  regex.hasMatch(f['price']))
+              .toList();
+        });
+      }
+      if (currentIndex == 1) {
+        setState(() {
+          isFilteringRentingProperties = true;
+          filteredRentingProperties = rentingList
+              .where((f) =>
+                  regex.hasMatch(f['title']) ||
+                  regex.hasMatch(f['description']) ||
+                  regex.hasMatch(f['type']) ||
+                  regex.hasMatch(f['price']))
+              .toList();
+        });
+      }
+
+      setState(() {});
+    }
   }
 
   Widget _buildSearchBar(BuildContext context) {
@@ -187,7 +238,7 @@ class _PropertyPageState extends State<PropertyPage>
               searchController: searchController,
               searBarBackgroundColor: AppColor.white,
               fontColor: AppColor.darkGrey,
-              onChanged: (String str) {},
+              onChanged: (String str) => filterProperties(str, context),
             ),
           ),
         ),
@@ -253,9 +304,13 @@ class _PropertyPageState extends State<PropertyPage>
             shrinkWrap: true,
             scrollDirection: Axis.vertical,
             children: List<Widget>.generate(
-              ownPropertyList.length,
+              isFilteringOwnProperties
+                  ? filteredOwnProperties.length
+                  : ownPropertyList.length,
               (int index) {
-                final int count = ownPropertyList.length;
+                final int count = isFilteringOwnProperties
+                    ? filteredOwnProperties.length
+                    : ownPropertyList.length;
                 final Animation<double> animation =
                     Tween<double>(begin: 0.0, end: 1.0).animate(
                   CurvedAnimation(
@@ -268,7 +323,9 @@ class _PropertyPageState extends State<PropertyPage>
                 return HomeListView(
                   animation: animation,
                   animationController: animationController,
-                  listData: ownPropertyList[index],
+                  listData: isFilteringOwnProperties
+                      ? filteredOwnProperties[index]
+                      : ownPropertyList[index],
                   callBack: () {
                     Navigator.push<dynamic>(
                       context,
@@ -307,9 +364,13 @@ class _PropertyPageState extends State<PropertyPage>
             shrinkWrap: true,
             scrollDirection: Axis.vertical,
             children: List<Widget>.generate(
-              rentingList.length,
+              isFilteringRentingProperties
+                  ? filteredRentingProperties.length
+                  : rentingList.length,
               (int index) {
-                final int count = rentingList.length;
+                final int count = isFilteringRentingProperties
+                    ? filteredRentingProperties.length
+                    : rentingList.length;
                 final Animation<double> animation =
                     Tween<double>(begin: 0.0, end: 1.0).animate(
                   CurvedAnimation(
@@ -322,7 +383,9 @@ class _PropertyPageState extends State<PropertyPage>
                 return HomeListView(
                   animation: animation,
                   animationController: animationController,
-                  listData: rentingList[index],
+                  listData: isFilteringRentingProperties
+                      ? filteredRentingProperties[index]
+                      : rentingList[index],
                   callBack: () {
                     Navigator.push<dynamic>(
                       context,
@@ -359,11 +422,16 @@ class _PropertyPageState extends State<PropertyPage>
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-      child: AppScaffold(
-          titleChild: AppText('Property'),
-          tabBar: _buildTabBar(),
-          backgroundColor: Colors.white,
-          child: _buildMainContainer(context)),
+      child: Builder(
+        builder: (BuildContext context) {
+          return AppScaffold(
+            titleChild: AppText('Property'),
+            tabBar: _buildTabBar(),
+            backgroundColor: Colors.white,
+            child: _buildMainContainer(context),
+          );
+        },
+      ),
     );
   }
 }
