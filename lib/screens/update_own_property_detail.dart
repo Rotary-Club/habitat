@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:habitat/screens/home_bottom_navigation.dart';
 import 'package:habitat/themes/app_theme.dart';
 import 'package:habitat/utils/utils.dart';
 import 'package:habitat/widgets/app_action_button.dart';
+import 'package:habitat/widgets/app_action_dialog.dart';
 import 'package:habitat/widgets/app_picture.dart';
 import 'package:habitat/widgets/app_scaffold.dart';
 import 'package:habitat/widgets/app_text.dart';
@@ -197,6 +199,34 @@ class UpdateOwnPropertyDetailsPage extends StatelessWidget {
       appBar: true,
       isElevation: true,
       titleChild: AppText('Update Property Details'),
+      actions: <Widget>[
+        Icon(
+          Icons.more_vert,
+          color: Colors.transparent,
+        ),
+        Icon(
+          Icons.more_vert,
+          color: Colors.transparent,
+        ),
+      ],
+      bottomNavigatorBar: AppActionButton(
+        function: () {
+          showDialog(
+              context: context,
+              builder: (context) => AppActionDialog(
+                    function: () {
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                    },
+                    title: 'Notification sent!',
+                    content:
+                        'Your have just sent a notification to your tenant.',
+                    cencelText: '',
+                    actionText: 'Okay',
+                  ));
+        },
+        title: 'COLLECT RENT',
+      ),
       child: _buildMainContainer(context),
     );
   }

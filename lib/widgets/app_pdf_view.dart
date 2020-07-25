@@ -86,15 +86,23 @@ class _AppPdfViewerState extends State<AppPdfViewer> {
                 setState(() {
                   _actualPageNumber = page;
                 });
+                print(_actualPageNumber);
               },
             ),
             Positioned(
-              bottom: 40,
+              bottom: 16,
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.all(18.0),
                   child: AppActionButton(
                     function: () {
+                      if (_actualPageNumber != 4) {
+                        _pdfController.nextPage(
+                          curve: Curves.ease,
+                          duration: Duration(milliseconds: 100),
+                        );
+                        return;
+                      }
                       showDialog(
                         context: context,
                         builder: (context) => AppActionDialog(
@@ -113,7 +121,7 @@ class _AppPdfViewerState extends State<AppPdfViewer> {
                         ),
                       );
                     },
-                    title: 'Share',
+                    title: _actualPageNumber != 4 ? 'Next' : 'Share',
                   ),
                 ),
               ),

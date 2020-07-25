@@ -122,20 +122,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  AppText(
-                    'Property Rental',
-                    fontWeight: FontWeight.bold,
-                  ),
-                  Expanded(child: Container()),
-                  Icon(Icons.more_horiz, color: AppColor.grey),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Icon(Icons.search, color: AppColor.grey),
-                ],
+              AppText(
+                'Property Rental',
+                fontWeight: FontWeight.bold,
               ),
               AppHeightSizedBox.smallBox,
               Row(
@@ -227,124 +218,116 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   Widget _buildPropertyGoal(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: InkWell(
-        onTap: () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => IssuesPage())),
-        child: Container(
-          decoration: BoxDecoration(
-            boxShadow: AppBoxShadow.normal,
-            color: AppColor.white,
-            borderRadius: AppBorderRadius.normal,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    AppText(
-                      'Property Goals',
-                      fontWeight: FontWeight.bold,
+      child: Container(
+        decoration: BoxDecoration(
+          boxShadow: AppBoxShadow.normal,
+          color: AppColor.white,
+          borderRadius: AppBorderRadius.normal,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              AppText(
+                'Property Goals',
+                fontWeight: FontWeight.bold,
+              ),
+              Container(),
+              AppHeightSizedBox.mediumBox,
+              Row(
+                children: [
+                  AppText('Rentend Properties'),
+                  Expanded(
+                    child: Container(),
+                  ),
+                  AppText('1 / 6'),
+                ],
+              ),
+              AppHeightSizedBox.smallBox,
+              Stack(
+                children: [
+                  Container(
+                    height: 6,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: AppColor.lightGrey,
+                      borderRadius: AppBorderRadius.normal,
                     ),
-                    Expanded(child: Container()),
-                    Icon(Icons.more_horiz, color: AppColor.grey),
-                  ],
-                ),
-                AppHeightSizedBox.mediumBox,
-                Row(
-                  children: [
-                    AppText('Rentend Properties'),
-                    Expanded(
-                      child: Container(),
+                  ),
+                  Container(
+                    height: 6,
+                    width: maxWidth(context) * 0.15,
+                    decoration: BoxDecoration(
+                      color: AppColor.blue,
+                      borderRadius: AppBorderRadius.normal,
                     ),
-                    AppText('1 / 6'),
-                  ],
-                ),
-                AppHeightSizedBox.smallBox,
-                Stack(
-                  children: [
-                    Container(
-                      height: 6,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: AppColor.lightGrey,
-                        borderRadius: AppBorderRadius.normal,
-                      ),
+                  ),
+                ],
+              ),
+              AppHeightSizedBox.mediumBox,
+              Row(
+                children: [
+                  AppText('Profile'),
+                  Expanded(
+                    child: Container(),
+                  ),
+                  AppText('-90%'),
+                ],
+              ),
+              AppHeightSizedBox.smallBox,
+              Stack(
+                children: [
+                  Container(
+                    height: 6,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: AppColor.lightGrey,
+                      borderRadius: AppBorderRadius.normal,
                     ),
-                    Container(
-                      height: 6,
-                      width: maxWidth(context) * 0.15,
-                      decoration: BoxDecoration(
-                        color: AppColor.blue,
-                        borderRadius: AppBorderRadius.normal,
-                      ),
+                  ),
+                  Container(
+                    height: 6,
+                    width: maxWidth(context) * 0.03,
+                    decoration: BoxDecoration(
+                      color: AppColor.red,
+                      borderRadius: AppBorderRadius.normal,
                     ),
-                  ],
-                ),
-                AppHeightSizedBox.mediumBox,
-                Row(
-                  children: [
-                    AppText('Profile'),
-                    Expanded(
-                      child: Container(),
+                  ),
+                ],
+              ),
+              AppHeightSizedBox.mediumBox,
+              Row(
+                children: [
+                  AppText('Issues Reported'),
+                  Expanded(
+                    child: Container(),
+                  ),
+                  AppText('85%'),
+                ],
+              ),
+              AppHeightSizedBox.smallBox,
+              Stack(
+                children: [
+                  Container(
+                    height: 6,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: AppColor.lightGrey,
+                      borderRadius: AppBorderRadius.normal,
                     ),
-                    AppText('-90%'),
-                  ],
-                ),
-                AppHeightSizedBox.smallBox,
-                Stack(
-                  children: [
-                    Container(
-                      height: 6,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: AppColor.lightGrey,
-                        borderRadius: AppBorderRadius.normal,
-                      ),
+                  ),
+                  Container(
+                    height: 6,
+                    width: maxWidth(context) * 0.7,
+                    decoration: BoxDecoration(
+                      color: AppColor.green,
+                      borderRadius: AppBorderRadius.normal,
                     ),
-                    Container(
-                      height: 6,
-                      width: maxWidth(context) * 0.03,
-                      decoration: BoxDecoration(
-                        color: AppColor.red,
-                        borderRadius: AppBorderRadius.normal,
-                      ),
-                    ),
-                  ],
-                ),
-                AppHeightSizedBox.mediumBox,
-                Row(
-                  children: [
-                    AppText('Issues Reported'),
-                    Expanded(
-                      child: Container(),
-                    ),
-                    AppText('85%'),
-                  ],
-                ),
-                AppHeightSizedBox.smallBox,
-                Stack(
-                  children: [
-                    Container(
-                      height: 6,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: AppColor.lightGrey,
-                        borderRadius: AppBorderRadius.normal,
-                      ),
-                    ),
-                    Container(
-                      height: 6,
-                      width: maxWidth(context) * 0.7,
-                      decoration: BoxDecoration(
-                        color: AppColor.green,
-                        borderRadius: AppBorderRadius.normal,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
@@ -374,70 +357,69 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     ];
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Container(
-        decoration: BoxDecoration(
-          boxShadow: AppBoxShadow.normal,
-          color: AppColor.white,
-          borderRadius: AppBorderRadius.normal,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  AppText(
-                    'Property News',
-                    fontWeight: FontWeight.bold,
-                  ),
-                  Expanded(child: Container()),
-                  Icon(Icons.more_horiz, color: AppColor.grey),
-                ],
-              ),
-              AppHeightSizedBox.mediumBox,
-              MediaQuery.removePadding(
-                context: context,
-                removeTop: true,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: news.length,
-                  itemBuilder: (context, i) => Padding(
-                    padding: const EdgeInsets.only(bottom: 16.0),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 48,
-                          height: 48,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: news[i]['color'].withOpacity(0.2),
-                          ),
-                          child: Center(
-                            child: Icon(
-                              news[i]['icon'],
-                              color: news[i]['color'],
+      child: InkWell(
+        onTap: () => Navigator.push(
+            context, MaterialPageRoute(builder: (context) => IssuesPage())),
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: AppBoxShadow.normal,
+            color: AppColor.white,
+            borderRadius: AppBorderRadius.normal,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AppText(
+                  'Property News',
+                  fontWeight: FontWeight.bold,
+                ),
+                AppHeightSizedBox.mediumBox,
+                MediaQuery.removePadding(
+                  context: context,
+                  removeTop: true,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: news.length,
+                    itemBuilder: (context, i) => Padding(
+                      padding: const EdgeInsets.only(bottom: 16.0),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 48,
+                            height: 48,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: news[i]['color'].withOpacity(0.2),
+                            ),
+                            child: Center(
+                              child: Icon(
+                                news[i]['icon'],
+                                color: news[i]['color'],
+                              ),
                             ),
                           ),
-                        ),
-                        AppWidthSizedBox.smallBox,
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            AppText(news[i]['title']),
-                            AppHeightSizedBox.extraSmallBox,
-                            AppText(
-                              news[i]['time'],
-                              color: AppColor.grey,
-                            ),
-                          ],
-                        ),
-                      ],
+                          AppWidthSizedBox.smallBox,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AppText(news[i]['title']),
+                              AppHeightSizedBox.extraSmallBox,
+                              AppText(
+                                news[i]['time'],
+                                color: AppColor.grey,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -506,106 +488,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           ),
         ],
       ),
-    );
-  }
-}
-
-class HomeListView extends StatelessWidget {
-  const HomeListView(
-      {Key key,
-      this.listData,
-      this.callBack,
-      this.animationController,
-      this.animation})
-      : super(key: key);
-
-  final Map<String, dynamic> listData;
-  final Animation<dynamic> animation;
-  final VoidCallback callBack;
-  final AnimationController animationController;
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: animationController,
-      builder: (BuildContext context, Widget child) {
-        return FadeTransition(
-          opacity: animation,
-          child: Transform(
-            transform: Matrix4.translationValues(
-                0.0, 50 * (1.0 - animation.value), 0.0),
-            child: InkWell(
-              onTap: () => callBack(),
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                        width: 0.3, color: AppColor.grey.withOpacity(0.2)),
-                  ),
-                  color: AppColor.white,
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      AppPicture(
-                        image: listData['image'],
-                        height: 75,
-                        width: 75,
-                        isBorderRadius: true,
-                      ),
-                      AppWidthSizedBox.smallBox,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          AppHeightSizedBox.extraSmallBox,
-                          AppText(
-                            listData['title'],
-                            fontSize: 17,
-                          ),
-                          AppText(
-                            listData['description'],
-                            fontSize: 12,
-                            color: Colors.grey,
-                          ),
-                        ],
-                      ),
-                      Expanded(child: Container()),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: AppColor.green,
-                              borderRadius: AppBorderRadius.normal,
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: AppText(
-                                'RM${listData['price']}/m',
-                                color: AppColor.white,
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          AppHeightSizedBox.smallBox,
-                          AppText(
-                            listData['type'],
-                            fontSize: 9,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-        );
-      },
     );
   }
 }

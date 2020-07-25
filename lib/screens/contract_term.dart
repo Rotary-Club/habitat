@@ -155,11 +155,15 @@ class _ContractTermPageState extends State<ContractTermPage> {
                     ),
                     AppTextFormField(
                       'Rental Payment',
-                      initialValue: 'Before 7th of every month',
+                      initialValue: 'Monthly',
                     ),
                     AppTextFormField(
                       'Bank Name',
-                      initialValue: 'Malayan Banking Berhad',
+                      initialValue: 'Maybank',
+                    ),
+                    AppTextFormField(
+                      'Bank Account No',
+                      initialValue: '1088 5500 6666',
                     ),
                     AppHeightSizedBox.smallBox,
                     AppActionButton(

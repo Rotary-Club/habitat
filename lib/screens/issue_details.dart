@@ -46,7 +46,10 @@ class IssueDetailsPage extends StatelessWidget {
       titleChild: AppText('Issue Details'),
       isElevation: true,
       bottomNavigatorBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 8.0,
+          vertical: 8,
+        ),
         child: AppActionButton(
           function: () => Navigator.push(
             context,
@@ -58,6 +61,16 @@ class IssueDetailsPage extends StatelessWidget {
           isMaxSize: true,
         ),
       ),
+      actions: <Widget>[
+        Icon(
+          Icons.more_vert,
+          color: Colors.transparent,
+        ),
+        Icon(
+          Icons.more_vert,
+          color: Colors.transparent,
+        ),
+      ],
       child: _buildMainContainer(context),
     );
   }

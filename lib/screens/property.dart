@@ -36,7 +36,7 @@ class _PropertyPageState extends State<PropertyPage>
       'title': 'Seri Mutiara Apartment',
       'description': 'Shah Alam Selangor',
       'price': '3790',
-      'type': 'Renting',
+      'type': 'Late Payment',
     },
     {
       'id': 3,
@@ -323,7 +323,17 @@ class _PropertyPageState extends State<PropertyPage>
                   animationController: animationController,
                   listData: rentingList[index],
                   callBack: () {
-                    Navigator.push<dynamic>(
+                    if (index == 1)
+                      return Navigator.push<dynamic>(
+                        context,
+                        MaterialPageRoute<dynamic>(
+                          builder: (BuildContext context) => PropertyDetail(
+                            isLatePayment: true,
+                          ),
+                        ),
+                      );
+
+                    return Navigator.push<dynamic>(
                       context,
                       MaterialPageRoute<dynamic>(
                         builder: (BuildContext context) => PropertyDetail(),

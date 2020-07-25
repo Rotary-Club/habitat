@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:habitat/screens/contract_term.dart';
+import 'package:habitat/screens/payment.dart';
 import 'package:habitat/screens/tenant_profile.dart';
 import 'package:habitat/themes/app_theme.dart';
 import 'package:habitat/widgets/app_action_button.dart';
+import 'package:habitat/widgets/app_action_dialog.dart';
 import 'package:habitat/widgets/app_picture.dart';
 import 'package:habitat/widgets/app_scaffold.dart';
 import 'package:habitat/widgets/app_text.dart';
 
 class PropertyDetail extends StatefulWidget {
-  const PropertyDetail({Key key}) : super(key: key);
+  final bool isLatePayment;
+  const PropertyDetail({this.isLatePayment: false, Key key}) : super(key: key);
 
   @override
   _PropertyDetailState createState() => _PropertyDetailState();
@@ -71,6 +74,19 @@ class _PropertyDetailState extends State<PropertyDetail>
   }
 
   Widget _buildStickyButton(BuildContext context) {
+    if (widget.isLatePayment)
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: AppActionButton(
+          title: 'PAY RENT',
+          function: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => PaymentPage()));
+          },
+          color: AppColor.blue,
+        ),
+      );
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: AppActionButton(
@@ -156,7 +172,7 @@ class _PropertyDetailState extends State<PropertyDetail>
                       ],
                     ),
                     Expanded(
-                      child: Row(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           AppText(
@@ -165,6 +181,23 @@ class _PropertyDetailState extends State<PropertyDetail>
                             fontSize: 10,
                             color: AppColor.green,
                           ),
+                          if (widget.isLatePayment)
+                            Container(
+                              margin: EdgeInsets.only(top: 16),
+                              decoration: BoxDecoration(
+                                color: AppColor.red,
+                                borderRadius: AppBorderRadius.normal,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(6.0),
+                                child: AppText(
+                                  'Late Payment',
+                                  color: AppColor.white,
+                                  fontSize: 8,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
                         ],
                       ),
                     ),
