@@ -57,6 +57,7 @@ class _ContractSummaryPageState extends State<ContractSummaryPage> {
                                     '2',
                             suffixText: 'year(s)',
                             isDigitsOnly: true,
+                            inputType: TextInputType.number,
                             onSave: (value) => widget.contractJson["duration"] =
                                 int.parse(value),
                           ),
@@ -309,7 +310,7 @@ class _ContractSummaryPageState extends State<ContractSummaryPage> {
                         }
                         return null;
                       },
-                      title: 'Review',
+                      title: 'Confirm Agreement',
                       isMaxSize: true,
                     ),
                   ],

@@ -82,6 +82,16 @@ class ServicesPage extends StatelessWidget {
       isElevation: true,
       backgroundColor: AppColor.veryLightGrey,
       titleChild: AppText('Services'),
+      actions: <Widget>[
+        Icon(
+          Icons.more_vert,
+          color: Colors.transparent,
+        ),
+        Icon(
+          Icons.more_vert,
+          color: Colors.transparent,
+        ),
+      ],
       child: _buildMainContainer(context),
     );
   }
