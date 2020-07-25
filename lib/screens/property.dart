@@ -27,7 +27,7 @@ class _PropertyPageState extends State<PropertyPage>
       'title': 'Koi Tropika',
       'description': 'Puchong Selangor',
       'price': '1650',
-      'type': 'Auto Debit',
+      'type': 'Active',
     },
     {
       'id': 2,
@@ -54,7 +54,7 @@ class _PropertyPageState extends State<PropertyPage>
       'title': 'Tiara Intan Condo',
       'description': 'Bukit Indah Ampang',
       'price': '2300',
-      'type': 'Available',
+      'type': 'Active',
     },
     {
       'id': 5,
@@ -63,7 +63,7 @@ class _PropertyPageState extends State<PropertyPage>
       'title': 'Ampang Condominium',
       'description': 'Shah Alam Selangor',
       'price': '1750',
-      'type': 'Renting',
+      'type': 'Maintainance',
     },
     {
       'id': 6,
@@ -72,7 +72,7 @@ class _PropertyPageState extends State<PropertyPage>
       'title': 'D\'Pines Condo',
       'description': 'Ampang Selangor',
       'price': '1500',
-      'type': 'Available',
+      'type': 'Active',
     },
     {
       'id': 7,
@@ -81,7 +81,7 @@ class _PropertyPageState extends State<PropertyPage>
       'title': 'Dedaun Residence',
       'description': 'Ampang Selangor',
       'price': '3200',
-      'type': 'Renting',
+      'type': 'Expiring',
     },
   ];
 
@@ -93,7 +93,7 @@ class _PropertyPageState extends State<PropertyPage>
       'title': 'Sky Condominium',
       'description': 'Puchong 47100',
       'price': '1500',
-      'type': 'Rented',
+      'type': '',
     },
     {
       'id': 2,
@@ -101,8 +101,8 @@ class _PropertyPageState extends State<PropertyPage>
           'https://img.rea-asia.com/my-subsale/premium/750x435-fit/realtors/images/640/34482/0f2f25187971487fbc639c9710960576.jpg',
       'title': 'Puchong 16 Sierra',
       'description': 'Puchong',
-      'price': '1500',
-      'type': 'Rented',
+      'price': '1200',
+      'type': 'Expired',
     },
     {
       'id': 3,
@@ -111,7 +111,7 @@ class _PropertyPageState extends State<PropertyPage>
       'title': 'Puchong Houses',
       'description': 'Puchong, Selangor',
       'price': '1800',
-      'type': 'Rented',
+      'type': '',
     },
     {
       'id': 4,
@@ -120,7 +120,7 @@ class _PropertyPageState extends State<PropertyPage>
       'title': 'D\' Latour',
       'description': 'Puchong, Selangor',
       'price': '1900',
-      'type': 'Rented',
+      'type': '',
     },
     {
       'id': 5,
@@ -129,7 +129,7 @@ class _PropertyPageState extends State<PropertyPage>
       'title': 'Luxury Hosuse',
       'description': 'Puchong, Selangor',
       'price': '1500',
-      'type': 'For Rent',
+      'type': '',
     },
     {
       'id': 6,
@@ -138,7 +138,7 @@ class _PropertyPageState extends State<PropertyPage>
       'title': 'One Puchong',
       'description': 'Puchong, Selangor',
       'price': '800',
-      'type': 'For Rent',
+      'type': 'Late Payment',
     },
     {
       'id': 7,
@@ -147,7 +147,7 @@ class _PropertyPageState extends State<PropertyPage>
       'title': 'Puchong Condo',
       'description': 'Puchong, Selangor',
       'price': '1500',
-      'type': 'For Rent',
+      'type': 'Renew',
     },
   ];
   bool isFilteringOwnProperties = false;
@@ -492,22 +492,28 @@ class HomeListView extends StatelessWidget {
                         isBorderRadius: true,
                       ),
                       AppWidthSizedBox.smallBox,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          AppHeightSizedBox.extraSmallBox,
-                          AppText(
-                            listData['title'],
-                            fontSize: 17,
+                      Flexible(
+                        fit: FlexFit.tight,
+                        child: Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AppHeightSizedBox.extraSmallBox,
+                              AppText(
+                                listData['title'],
+                                fontSize: 17,
+                                overflow: TextOverflow.ellipsis,
+                                maxlines: 1,
+                              ),
+                              AppText(
+                                listData['description'],
+                                fontSize: 12,
+                                color: Colors.grey,
+                              ),
+                            ],
                           ),
-                          AppText(
-                            listData['description'],
-                            fontSize: 12,
-                            color: Colors.grey,
-                          ),
-                        ],
+                        ),
                       ),
-                      Expanded(child: Container()),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
